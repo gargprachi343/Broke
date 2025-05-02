@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrokeBro - Student Discounts</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="BROKESTYLE.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Montserrat:wght@500&family=Playfair+Display:wght@700&family=Roboto:wght@400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-green-900 text-white px-6 py-4 flex justify-between items-center relative">
+    <button class="text-2xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="text-4xl font-bold absolute left-1/2 transform -translate-x-1/2 font-['Poppins'] tracking-tight">BrokeBro</div>
+    <div class="relative w-1/3">
+      <input type="text" placeholder="Search brands, items, categories"
+             class="w-full px-4 py-2 rounded-full bg-white text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200 font-['Poppins'] text-sm tracking-wide"
+             aria-label="Search" />
+      <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+    </div>
+  </header>
+
+  <!-- Nav Categories -->
+  <nav class="flex flex-wrap justify-center bg-green-100 py-3 gap-3 text-sm font-['Montserrat'] uppercase tracking-wider">
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium">LEARN & EARN</button>
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium">JUST IN</button>
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium">FASHION</button>
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium">FOOD&DRINK</button>
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium">BEAUTY</button>
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium">HEALTH&FITNESS</button>
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium">TECHNOLOGY</button>
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium">LIFESTYLE</button>
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium">WELLBEING</button>
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium">ALL</button>
+  </nav>
+
+  <!-- Content Sections -->
+  <main class="px-4">
+    <h1 class="text-center text-3xl font-bold mt-4">FASHION</h1>
+<!-- Top Brands -->
+    <section class="mb-6 w-full">
+        <h2 class="text-xl font-bold mb-4 px-4">TOP BRANDS</h2>
+        <div class="flex items-center justify-between px-4 gap-2 w-full">
+          <button class="text-2xl">&#8592;</button>
+          <div class="flex gap-6 overflow-x-auto w-full justify-evenly">
+            <div class="w-24 h-24 bg-gray-200 rounded-full">
+                <img src="./assests/MAC.png" alt="Brand 1" class="w-full h-full object-fit rounded-full">
+            </div>
+            <div class="w-24 h-24 bg-gray-200 rounded-full">
+                <img src="./assests/loreal.jpg" alt="Brand 2" class="w-full h-full object-cover rounded-full">
+            </div>
+            <div class="w-24 h-24 bg-gray-200 rounded-full">
+                <img src="./assests/sugar.png" alt="Brand 3" class="w-full h-full object-fit rounded-full">
+            </div>
+            <div class="w-24 h-24 bg-gray-200 rounded-full">
+                <img src="./assests/bodyshop.jpg" alt="Brand 4" class="w-full h-full object-fit rounded-full">
+            </div>
+            <div class="w-24 h-24 bg-gray-200 rounded-full">
+                <img src="./assests/Chanel.png" alt="Brand 5" class="w-full h-full object-fit rounded-full">
+            </div>
+            <div class="w-24 h-24 bg-gray-200 rounded-full">
+                <img src="./assests/nivea.png" alt="Brand 6" class="w-full h-full object-fit rounded-full">
+            </div>
+            <div class="w-24 h-24 bg-gray-200 rounded-full">
+                <img src="./assests/swiss.jpeg" alt="Brand 7" class="w-full h-full object-fit rounded-full">
+            </div>
+          </div>
+          <button class="text-2xl">&#8594;</button>
+        </div>
+      </section>
+
+    <!-- Best Deals -->
+    <section class="my-6">
+      <h2 class="text-lg font-semibold">BEST DEALS</h2>
+      <div class="flex items-center gap-2 mt-2">
+        <button class="arrow" onclick="scrollSection('bestDeals', -1)">&#8592;</button>
+        <div id="bestDeals" class="flex overflow-x-auto gap-4 w-full">
+          <div class="w-full h-64 bg-gray-300 rounded-lg"></div>
+        </div>
+        <button class="arrow" onclick="scrollSection('bestDeals', 1)">&#8594;</button>
+      </div>
+    </section>
+
+   <!-- Fashion Categories -->
+<!-- Fashion Blocks Section -->
+<section id="fashionBlocks" class="my-10">
+    <script>
+        const fashionSections = [
+          {
+            title: "MEN WEAR",
+            cards: [
+              { img: "./menswear1.jpg", heading: "Casual Shirts", subheading: "Flat 30% off on latest arrivals" },
+              { img: "./menswear2.jpg", heading: "Formal Wear", subheading: "Upto 50% off on office collection" },
+              { img: "./menswear3.jpg", heading: "Denim Jeans", subheading: "Buy 1 Get 1 Free on select items" },
+              { img: "./menswear4.jpg", heading: "Jackets & Coats", subheading: "Winter essentials at 40% off" },
+              { img: "./menswear5.jpg", heading: "Activewear", subheading: "Sports styles from ₹799" }
+            ]
+          },
+          {
+            title: "WOMEN WEAR",
+            cards: [
+              { img: "./womenwear1.jpg", heading: "Sarees & Suits", subheading: "Trending ethnic styles at 40% off" },
+              { img: "./womenwear2.jpg", heading: "Western Tops", subheading: "New arrivals from ₹499" },
+              { img: "./womenwear3.jpg", heading: "Dresses & Gowns", subheading: "Evening wear up to 60% off" },
+              { img: "./womenwear4.jpg", heading: "Winter Wear", subheading: "Cozy layers starting ₹999" },
+              { img: "./womenwear5.jpg", heading: "Activewear", subheading: "Gym fits with flat 30% off" }
+            ]
+          },
+          {
+            title: "KIDS WEAR",
+            cards: [
+              { img: "./kidswear1.jpg", heading: "Casual Outfits", subheading: "Comfy clothes for playtime" },
+              { img: "./kidswear2.jpg", heading: "Party Dresses", subheading: "Festive deals up to 45% off" },
+              { img: "./kidswear3.jpg", heading: "School Wear", subheading: "Uniforms & accessories available" },
+              { img: "./kidswear4.jpg", heading: "Winter Wear", subheading: "Warm styles for toddlers" },
+              { img: "./kidswear5.jpg", heading: "Night Suits", subheading: "Sleepwear sets starting ₹399" }
+            ]
+          },
+          {
+            title: "SHOES WEAR",
+            cards: [
+              { img: "./shoes1.jpg", heading: "Sneakers", subheading: "Top brands with 20% off" },
+              { img: "./shoes2.jpg", heading: "Formal Shoes", subheading: "Office-ready styles from ₹999" },
+              { img: "./shoes3.jpg", heading: "Sandals & Floaters", subheading: "Summer collection on sale" },
+              { img: "./shoes4.jpg", heading: "Sports Shoes", subheading: "Running shoes up to 35% off" },
+              { img: "./shoes5.jpg", heading: "Boots", subheading: "Winter wear with extra grip" }
+            ]
+          },
+          {
+            title: "ALL FASHION",
+            cards: [
+              { img: "./all1.jpg", heading: "Accessories", subheading: "Bags, belts & more from ₹199" },
+              { img: "./all2.jpg", heading: "Watches", subheading: "Smart & analog watches at 30% off" },
+              { img: "./all3.jpg", heading: "Jewellery", subheading: "Trendy pieces under ₹499" },
+              { img: "./all4.jpg", heading: "Sunglasses", subheading: "UV protection & style in one" },
+              { img: "./all5.jpg", heading: "Hats & Caps", subheading: "Beat the sun in style" }
+            ]
+          }
+        ];
+
+        let htmlContent = "";
+
+        fashionSections.forEach(section => {
+          htmlContent += `
+            <div class="mt-10">
+              <h2 class="text-3xl font-bold text-green-800 mb-4 px-4">${section.title}</h2>
+              <div class="flex gap-6 overflow-x-auto px-4 pb-4">
+                ${section.cards.map(card => `
+                  <div class="w-72 h-96 bg-white rounded-xl shadow-lg flex-shrink-0 overflow-hidden border border-gray-200">
+                    <img src="${card.img}" alt="${card.heading}" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                      <h4 class="text-lg font-semibold mb-1">${card.heading}</h4>
+                      <p class="text-sm text-gray-600 mb-3">${card.subheading}</p>
+                      <button class="bg-green-700 text-white px-4 py-2 rounded-full text-sm hover:bg-green-800 transition">Shop Now</button>
+                    </div>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          `;
+        });
+
+        document.getElementById("fashionBlocks").innerHTML = htmlContent;
+      </script>ō
+
+  <!-- Footer -->
+  <footer class="bg-green-900 text-white py-6 mt-8 text-center">
+    <div class="flex justify-center gap-4 mb-3">
+      <a href="#" class="text-xs">Contact</a>
+      <a href="#" class="text-xs">Corporate</a>
+      <a href="#" class="text-xs">Press</a>
+      <a href="#" class="text-xs">Careers</a>
+    </div>
+    <div class="flex justify-center gap-2">
+      <div class="text-3xl font-bold">B</div>
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="h-8">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="h-8">
+    </div>
+    <div class="flex justify-center gap-3 mt-3">
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+      <a href="#">Privacy</a>
+    </div>
+  </footer>
+
+  <script src="fashionscript.js"></script>
+</body>
+</html>
