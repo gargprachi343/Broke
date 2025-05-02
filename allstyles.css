@@ -1,0 +1,73 @@
+
+/* style.css */
+
+/* General full-page layout */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    @apply flex flex-col min-h-screen;
+  }
+
+  /* Header & Footer sticky-like spacing */
+  header, footer {
+    @apply w-full;
+  }
+
+  /* Category Button Style */
+  .category {
+    @apply bg-white text-green-900 border border-green-400 px-3 py-1 rounded-full text-xs hover:bg-green-200 transition;
+  }
+
+  /* Scroll Arrow Buttons */
+  .arrow {
+    @apply bg-green-800 text-white px-3 py-1 rounded hover:bg-green-700 transition;
+  }
+
+  /* Footer Link Hover */
+  footer a {
+    @apply hover:underline text-xs;
+  }
+   /* Scroll container tweaks */
+   #topBrands,
+   #bestDeals,
+   [id^="section"] {
+     scroll-behavior: smooth;
+     padding-bottom: 0.5rem;
+   }
+   main.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    padding-top: 1rem;
+  }
+
+  .card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 1rem;
+  }
+
+  .card.promo p {
+    margin: 0.5rem 0;
+  }
+
+  .card.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    height: 150px;
+  }
