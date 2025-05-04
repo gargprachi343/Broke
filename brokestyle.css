@@ -2,73 +2,73 @@
 
 /* Category button style */
 .category {
-    @apply bg-white text-green-900 border border-green-300 px-4 py-1 rounded-full hover:bg-green-100;
-  }
+  @apply bg-white text-green-900 border border-green-300 px-4 py-1 rounded-full hover:bg-green-100;
+}
 
-  /* Arrow buttons for slider */
-  .arrow {
-    @apply text-xl bg-green-800 text-white px-3 py-1 rounded-full hover:bg-green-700;
-  }
+/* Arrow buttons for slider */
+.arrow {
+  @apply text-xl bg-green-800 text-white px-3 py-1 rounded-full hover:bg-green-700;
+}
 
-  /* Scroll container custom style if needed */
-  .scrollable-container::-webkit-scrollbar {
-    height: 6px;
-  }
+/* Scroll container custom style if needed */
+.scrollable-container::-webkit-scrollbar {
+  height: 6px;
+}
 
-  .scrollable-container::-webkit-scrollbar-thumb {
-    background-color: #a0aec0;
-    border-radius: 10px;
-  }
+.scrollable-container::-webkit-scrollbar-thumb {
+  background-color: #a0aec0;
+  border-radius: 10px;
+}
 /* General styling */
 body {
-  font-family: Arial, sans-serif;
+font-family: Arial, sans-serif;
 }
 
 /* Dropdown container */
 .dropdown {
-  position: relative;
-  display: inline-block;
+position: relative;
+display: inline-block;
 }
 
 /* Button styling */
 .dropdown-button {
-  padding: 10px 20px;
-  background-color: #3498db;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
+padding: 10px 20px;
+background-color: #3498db;
+color: white;
+border: none;
+cursor: pointer;
+border-radius: 5px;
 }
 
 /* Dropdown content (hidden by default) */
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: white;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-  min-width: 160px;
-  z-index: 1;
-  border-radius: 5px;
-  overflow: hidden;
+display: none;
+position: absolute;
+background-color: white;
+box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+min-width: 160px;
+z-index: 1;
+border-radius: 5px;
+overflow: hidden;
 }
 
 /* Dropdown links */
 .dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  display: block;
-  text-decoration: none;
+color: black;
+padding: 12px 16px;
+display: block;
+text-decoration: none;
 }
 
 /* Hover effects */
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+background-color: #f1f1f1;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+display: block;
 }
 
 .dropdown:hover .dropdown-button {
-  background-color: #2980b9;
+background-color: #2980b9;
 }
