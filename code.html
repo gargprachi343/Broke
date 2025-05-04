@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reebok Discount Offer</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Reebok_2019_logo.svg" alt="Reebok Logo" class="logo"/>
+
+    <h1>35% Off Full Price + 25% Off Outlet Items</h1>
+
+    <p class="rating-text">Rate this offer:</p>
+    <div class="rating">
+      <button onclick="rateOffer('up')">👍</button>
+      <button onclick="rateOffer('down')">👎</button>
+    </div>
+
+    <p class="instructions">
+      Enter this code in the promotional code area during checkout to benefit from 35% Off Full Price + 25% Off Outlet Items
+    </p>
+
+    <div class="code-box">
+      <input type="text" value="X7RD-R6TV-WX5R-RV4Q" id="promoCode" readonly/>
+      <button onclick="copyCode()">Copy</button>
+    </div>
+
+    <p class="note">This is a single use code for you only. A new code will be sent next time you shop with Reebok.</p>
+
+    <div class="buttons">
+      <a href="https://www.reebok.com" target="_blank" class="primary-btn">Launch website</a>
+      <button class="secondary-btn" onclick="getNewCode()">Get new code</button>
+    </div>
+
+    <div class="terms">
+      <h3>Terms & Conditions</h3>
+      <p>
+        The voucher code is valid for 1 time usage online on reebok.co.uk orders only.
+        The offer is excluding delivery cost and cannot be combined with other promotions.
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

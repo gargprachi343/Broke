@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Join BrokeBro</title>
+  <link rel="stylesheet" href="registerpagestyles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>BrokeBro</h1>
+    <h2>Join BrokeBro now</h2>
+    <p class="subtitle">
+      Studying at college, sixth form or university?<br/>
+      Get student discounts on all your fave brands – for free!
+    </p>
+
+    <form id="registerForm" onsubmit="return validateForm()">
+      <input type="email" id="email" placeholder="Personal email address" required />
+      <input type="email" id="confirmEmail" placeholder="Confirm personal email address" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <input type="password" id="confirmPassword" placeholder="Confirm password" required />
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="terms" />
+        <label for="terms">
+          I accept the BrokeBro <a href="#">Terms of Service</a> and have read and understood the 
+          <a href="#">Privacy Policy</a> and <a href="#">Cookie Policy</a>.
+          I confirm that I’m 13 years of age or older (and have obtained parental consent), or 18 years of age or older.
+        </label>
+      </div>
+
+      <button type="submit" class="btn primary">Join now</button>
+      <a href="#" class="btn-link">Log in</a>
+    </form>
+
+    <footer>
+      <p>Copyright © BrokeBro. All rights reserved.</p>
+    </footer>
+  </div>
+  <script src="registerscript.js"></script>
+</body>
+</html>

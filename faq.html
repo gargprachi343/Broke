@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQs – BrokeBro Style</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+  <div class="max-w-3xl mx-auto p-6">
+    <h1 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h1>
+
+    <div id="faq-container" class="space-y-4">
+      <!-- Accordion Item -->
+      <div class="border rounded-lg bg-white shadow">
+        <button class="w-full flex justify-between items-center p-4 text-left font-medium text-gray-800 hover:bg-gray-100 faq-toggle">
+          Who can join BrokeBro?
+          <span class="text-xl">+</span>
+        </button>
+        <div class="faq-content hidden p-4 text-sm text-gray-700">
+          Anyone aged 16 or over and currently enrolled in a college or university is eligible to join BrokeBro.
+        </div>
+      </div>
+
+      <div class="border rounded-lg bg-white shadow">
+        <button class="w-full flex justify-between items-center p-4 text-left font-medium text-gray-800 hover:bg-gray-100 faq-toggle">
+          How do I verify my student status?
+          <span class="text-xl">+</span>
+        </button>
+        <div class="faq-content hidden p-4 text-sm text-gray-700">
+          You can verify your student status using a valid school email address or your student portal through our verification partner.
+        </div>
+      </div>
+
+      <div class="border rounded-lg bg-white shadow">
+        <button class="w-full flex justify-between items-center p-4 text-left font-medium text-gray-800 hover:bg-gray-100 faq-toggle">
+          Why isn’t my discount code working?
+          <span class="text-xl">+</span>
+        </button>
+        <div class="faq-content hidden p-4 text-sm text-gray-700">
+          Make sure the code hasn’t expired, is applied to eligible items, and that you're logged in. Some discounts may have restrictions.
+        </div>
+      </div>
+
+      <div class="border rounded-lg bg-white shadow">
+        <button class="w-full flex justify-between items-center p-4 text-left font-medium text-gray-800 hover:bg-gray-100 faq-toggle">
+          How do I reset my password?
+          <span class="text-xl">+</span>
+        </button>
+        <div class="faq-content hidden p-4 text-sm text-gray-700">
+          Click on “Forgot password” at login, and follow the instructions to reset via your registered email.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll(".faq-toggle").forEach(button => {
+      button.addEventListener("click", () => {
+        const content = button.nextElementSibling;
+        const open = !content.classList.contains("hidden");
+
+        // Close all open FAQs
+        document.querySelectorAll(".faq-content").forEach(item => item.classList.add("hidden"));
+        document.querySelectorAll(".faq-toggle span").forEach(icon => icon.textContent = "+");
+
+        // Toggle current one
+        if (!open) {
+          content.classList.remove("hidden");
+          button.querySelector("span").textContent = "−";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

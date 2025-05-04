@@ -1,0 +1,86 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 400px;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin: 1rem 0;
+}
+
+.subtitle {
+  color: #333;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-top: 0.25rem;
+}
+
+.checkbox-group a {
+  color: #000;
+  text-decoration: underline;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.primary {
+  background-color: #003bff;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.btn-link {
+  display: block;
+  color: #003bff;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+footer {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 2rem;
+}

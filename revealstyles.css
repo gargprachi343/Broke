@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    padding: 20px;
+    color: #333;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+
+  h1 {
+    color: #222;
+  }
+
+  .subtext {
+    margin-top: 10px;
+    color: #666;
+    font-size: 16px;
+  }
+
+  button#getCodeBtn {
+    background-color: #00bfa5;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    margin: 20px 0;
+    cursor: pointer;
+  }
+
+  button#getCodeBtn:hover {
+    background-color: #009e87;
+  }
+
+  .feedback {
+    margin-top: 20px;
+  }
+
+  .feedback-btn {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+
+  .feedback-btn.good {
+    background-color: #c8e6c9;
+  }
+
+  .feedback-btn.bad {
+    background-color: #ffcdd2;
+  }
+
+  .about-discount {
+    text-align: left;
+    margin-top: 30px;
+    font-size: 14px;
+  }
+
+  #toggleLink {
+    color: #0077cc;
+    text-decoration: underline;
+    cursor: pointer;
+  }

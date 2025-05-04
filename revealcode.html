@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10% Student Discount | REEBOK</title>
+  <link rel="stylesheet" href="revealstyles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>10% Student Discount</h1>
+    <p class="subtext">Full price items only<br>at REEBOK</p>
+    <button id="getCodeBtn">GET CODE & OPEN SITE</button>
+
+    <div class="feedback">
+      <p>How would you rate this offer?</p>
+      <button class="feedback-btn good" onclick="handleFeedback('good')">😊 Good</button>
+      <button class="feedback-btn bad" onclick="handleFeedback('bad')">😞 Bad</button>
+    </div>
+
+    <div class="about-discount">
+      <h2>About this student discount</h2>
+      <p>
+        Unlock our exclusive 10% Student Discount off full-price items at REEBOK with BrokeBro.
+        <br><br>
+        Use our ASOS student discount code at the checkout to enjoy 10% off your purchase.
+        <br><br>
+        Ends 23:59 BST on 30 April 2023. Code must be obtained through BrokeBro...
+        <span id="moreText" style="display: none;">
+          Maximum spend of £500 (pre-discount) per order. Code can be used on all full-price items...
+        </span>
+        <a href="#" id="toggleLink" onclick="toggleTerms(event)">Hide Terms & Conditions</a>
+      </p>
+    </div>
+  </div>
+  <script src="revealscript.js"></script>
+</body>
+</html>

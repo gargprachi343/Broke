@@ -1,0 +1,168 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  background: #f4f4f4;
+  overflow-y: scroll;
+}
+.hero {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/39/University_building.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px black;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.2em;
+  text-shadow: 1px 1px black;
+}
+
+.not-broke {
+  text-align: center;
+  background: #1E8449;
+  color: white;
+  padding: 50px 20px;
+}
+
+.not-broke .strikethrough {
+  text-decoration: line-through;
+  color: #e74c3c;
+}
+
+.not-broke .brands {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.not-broke img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  background: white;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.customers {
+  background: #fceae8;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.customers h2 {
+  margin-bottom: 30px;
+}
+
+.reviews {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.review {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  width: 150px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.review img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+}
+/* style.css */
+
+/* Category button style */
+.category {
+  @apply bg-white text-green-900 border border-green-300 px-4 py-1 rounded-full hover:bg-green-100;
+}
+
+/* Arrow buttons for slider */
+.arrow {
+  @apply text-xl bg-green-800 text-white px-3 py-1 rounded-full hover:bg-green-700;
+}
+
+/* Scroll container custom style if needed */
+.scrollable-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scrollable-container::-webkit-scrollbar-thumb {
+  background-color: #a0aec0;
+  border-radius: 10px;
+}
+/* General styling */
+body {
+font-family: Arial, sans-serif;
+}
+
+/* Dropdown container */
+.dropdown {
+position: relative;
+display: inline-block;
+}
+
+/* Button styling */
+.dropdown-button {
+padding: 10px 20px;
+background-color: #3498db;
+color: white;
+border: none;
+cursor: pointer;
+border-radius: 5px;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: white;
+box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+min-width: 160px;
+z-index: 1;
+border-radius: 5px;
+overflow: hidden;
+}
+
+/* Dropdown links */
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+display: block;
+text-decoration: none;
+}
+
+/* Hover effects */
+.dropdown-content a:hover {
+background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+display: block;
+}
+
+.dropdown:hover .dropdown-button {
+background-color: #2980b9;
+}
