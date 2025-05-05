@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="BROKESTYLE.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Montserrat:wght@500&family=Playfair+Display:wght@700&family=Roboto:wght@400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
-<body class="bg-white text-gray-800">
+<body class="bg-black text-yellow-600">
 
   <!-- Header -->
   <header class="bg-green-900 text-white px-6 py-4 flex justify-between items-center relative">
@@ -212,7 +212,7 @@
         fashionSections.forEach(section => {
           htmlContent += `
             <div class="mt-10">
-              <h2 class="text-3xl font-bold text-green-800 mb-4 px-4">${section.title}</h2>
+              <h2 class="text-3xl font-bold text-yellow-600 mb-4 px-4">${section.title}</h2>
               <div class="flex gap-6 overflow-x-auto px-4 pb-4">
                 ${section.cards.map(card => `
                   <div class="w-72 h-96 bg-white rounded-xl shadow-lg flex-shrink-0 overflow-hidden border border-gray-200">
@@ -220,7 +220,7 @@
                     <div class="p-4">
                       <h4 class="text-lg font-semibold mb-1">${card.heading}</h4>
                       <p class="text-sm text-gray-600 mb-3">${card.subheading}</p>
-                      <button class="bg-green-700 text-white px-4 py-2 rounded-full text-sm hover:bg-green-800 transition">Shop Now</button>
+                      <button class="bg-yellow-200 text-black px-4 py-2 rounded-full text-sm hover:bg-yellow-300 transition">Shop Now</button>
                     </div>
                   </div>
                 `).join("")}
