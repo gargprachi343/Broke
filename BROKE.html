@@ -8,6 +8,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="BROKESTYLE.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Montserrat:wght@500&family=Playfair+Display:wght@700&family=Roboto:wght@400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    .sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 50; /* Ensure sidebar appears above navbar and other content */
+    }
+    .sidebar.open {
+      transform: translateX(0);
+    }
+  </style>
 </head>
 <body class="bg-black text-gray-800">
 
@@ -176,6 +186,17 @@
     function scrollRight() {
       document.getElementById('scrollContainer').scrollBy({ left: 200, behavior: 'smooth' });
     }
+    const menuButton = document.getElementById('menuButton');
+    const sidebar = document.getElementById('sidebar');
+    const closeButton = document.getElementById('closeButton');
+
+    menuButton.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+
+    closeButton.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+    });
   </script>
 </body>
 </html>
