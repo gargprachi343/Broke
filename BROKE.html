@@ -19,11 +19,11 @@
     }
   </style>
 </head>
-<body class="bg-white text-gray-800">
+<body class="bg-black text-gray-800">
 
   <!-- Header -->
-  <header class="bg-green-900 text-white px-6 py-4 flex justify-between items-center relative">
-    <button id="menuButton" class="text-2xl focus:outline-none">
+  <header class="bg-black text-white px-6 py-4 flex justify-between items-center relative">
+    <button class="text-2xl focus:outline-none">
       <i class="fas fa-bars"></i>
     </button>
     <!-- Sidebar -->
@@ -36,6 +36,7 @@
       <a href="/public/registerpage.html"class="py-2 px-4 mb-2 bg-blue-600 hover:bg-blue-700 rounded">Sign Up</a>
     </div>
     <div class="text-4xl font-bold absolute left-1/2 transform -translate-x-1/2 font-['Poppins'] tracking-tight">BrokeBro</div>
+    <div class="text-4xl font-bold text-black text-yellow-600 absolute left-1/2 transform -translate-x-1/2 font-['Poppins'] tracking-tight">BrokeBro</div>
     <div class="relative w-1/3">
       <input type="text" placeholder="Search brands, items, categories"
              class="w-full px-4 py-2 rounded-full bg-white text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200 font-['Poppins'] text-sm tracking-wide"
@@ -45,88 +46,72 @@
   </header>
 
   <!-- Nav Categories -->
-  <nav class="flex flex-wrap justify-center bg-green-100 py-3 gap-3 text-sm font-['Montserrat'] uppercase tracking-wider">
-    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium">
-      <div class="dropdown flex items-center">
-        LEARN & EARN
-      </div>
-    </button>
-    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium">
-      <div class="dropdown flex items-center">
-        JUST IN
-      </div>
-    </button>
-    <div class="dropdown flex items-center">
-      <a href="fashion.html" class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium text-center">FASHION</a>
-      <div class="dropdown-content">
-        <a href="#">Womenswear</a>
-        <a href="#">Menswear</a>
-        <a href="#">Shoes</a>
-        <a href="#">Accessories</a>
-        <a href="#">Lingerie and underwear</a>
-        <a href="#">Sportswear</a>
-      </div>
+  <nav class="flex flex-wrap justify-center bg-yellow-300 py-3 gap-3 text-sm font-['Montserrat'] uppercase tracking-wider">
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-500 text-xs font-medium">LEARN & EARN</button>
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-500 text-xs font-medium">JUST IN</button>
+      <div class="dropdown">
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-500 text-xs font-medium">FASHION</button>
+    <div class="dropdown-content">
+      <a href="#">Womenswear</a>
+      <a href="#">Menswear</a>
+      <a href="#">Shoes</a>
+      <a href="#">Accessories</a>
+      <a href="#">Lingerie and underwear</a>
+      <a href="#">Sportswear</a>
     </div>
-    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium">
-      <div class="dropdown flex items-center">
-        FOOD&DRINK
-      </div>
-    </button>
-    <div class="dropdown flex items-center">
-      <a href="beauty.html" class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium text-center">BEAUTY</a>
-      <div class="dropdown-content">
-        <a href="#">Make-Up</a>
-        <a href="#">Skincare</a>
-        <a href="#">Haircare & Tools</a>
-        <a href="#">Fragrance</a>
-      </div>
+  </div>
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-500 text-xs font-medium">FOOD&DRINK</button>
+  <div class="dropdown">
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-500 text-xs font-medium">BEAUTY</button>
+    <div class="dropdown-content">
+      <a href="#">Make-Up</a>
+      <a href="#">Skincare</a>
+      <a href="#">Haircare & Tools</a>
+      <a href="#">Fragrance</a>
     </div>
-    <div class="dropdown flex items-center">
-      <a href="health.html" class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium text-center">HEALTH&FITNESS</a>
-      <div class="dropdown-content">
-        <a href="#">Workouts</a>
-        <a href="#">Proteins and Supplements</a>
-        <a href="#">Eyecare</a>
-        <a href="#">Fitness Accessories</a>
-        <a href="#">Wellbeing apps</a>
-      </div>
+  </div>
+  <div class="dropdown">
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-500 text-xs font-medium">HEALTH&FITNESS</button>
+    <div class="dropdown-content">
+      <a href="#">Workouts</a>
+      <a href="#">Proteins and Supplements</a>
+      <a href="#">Eyecare</a>
+      <a href="#">Fitness Accessories</a>
+      <a href="#">Wellbeing apps</a>
     </div>
-    <div class="dropdown flex items-center">
-      <a href="technology.html" class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium text-center">TECHNOLOGY</a>
-      <div class="dropdown-content">
-        <a href="#">Accessories</a>
-        <a href="#">Laptops and Tablets</a>
-        <a href="#">Mobile</a>
-        <a href="#">Gaming</a>
-        <a href="#">Desktops</a>
-        <a href="#">TVs</a>
-        <a href="#">Home Appliances</a>
-        <a href="#">Subscriptions</a>
-      </div>
+  </div>
+  <div class="dropdown">
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-500 text-xs font-medium">TECHNOLOGY</button>
+    <div class="dropdown-content">
+      <a href="#">Accessories </a>
+      <a href="#">Laptops and Tablets</a>
+      <a href="#">Mobile</a>
+      <a href="#">Gaming</a>
+      <a href="#">Desktops</a>
+      <a href="#">TVs</a>
+      <a href="#">Home Appliances</a>
+      <a href="#">Subscriptions</a>
     </div>
-    <div class="dropdown flex items-center">
-      <a href="lifestyle.html" class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium text-center">LIFESTYLE</a>
-      <div class="dropdown-content">
-        <a href="#">Travel and Transport</a>
-        <a href="#">Holidays and Hotels</a>
-        <a href="#">Subscriptions</a>
-        <a href="#">Home and Bankings</a>
-        <a href="#">Books and Stationary</a>
-      </div>
+  </div>
+  <div class="dropdown">
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-500 text-xs font-medium">LIFESTYLE</button>
+    <div class="dropdown-content">
+      <a href="#">Travel and Transport</a>
+      <a href="#">Holidays and Hotels</a>
+      <a href="#">Subscriptions</a>
+      <a href="#">Home and Bankings</a>
+      <a href="#">Books and Stationary</a>
     </div>
-    <div class="dropdown flex items-center">
-      <a href="wellbeing.html" class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium text-center">WELLBEING</a>
-      <div class="dropdown-content">
-        <a href="#">Dental Care</a>
-        <a href="#">Health Care</a>
-        <a href="#">Nutrition</a>
-      </div>
+  </div>
+  <div class="dropdown">
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-500 text-xs font-medium">WELLBEING</button>
+    <div class="dropdown-content">
+      <a href="#">Dental Care</a>
+      <a href="#">Health Care</a>
+      <a href="#">Nutrition</a>
     </div>
-    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-green-200 text-xs font-medium text-center">
-      <div class="dropdown flex items-center">
-        ALL
-      </div>
-    </button>
+  </div>
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-500 text-xs font-medium">ALL</button>
   </nav>
 
   <!-- Just In Section -->
