@@ -122,7 +122,7 @@
   <!-- Nav Categories -->
   <nav class="flex flex-wrap justify-center bg-yellow-600 py-3 gap-3 text-sm font-['Montserrat'] uppercase tracking-wider">
     <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-300 text-xs font-medium text-black">LEARN & EARN</button>
-    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-300 text-xs font-medium text-black">JUST IN</button>
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-300 text-xs font-medium text-black" onclick="window.location.href='BROKE.html'">JUST IN</button>
     <div class="dropdown">
       <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-300 text-xs font-medium text-black" onclick="window.location.href='fashion.html'">FASHION</button>
       <div class="dropdown-content">
@@ -187,7 +187,7 @@
     </div>
     <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-300 text-xs font-medium text-black">ALL</button>
   </nav>
-  
+
   <!-- Content Sections -->
   <main class="px-4">
     <h1 class="text-center text-3xl font-bold mt-4 text-yellow-500">BEAUTY</h1>
@@ -223,17 +223,54 @@
       </div>
     </section>
 
-    <!-- Best Deals -->
-    <section class="my-6">
-      <h2 class="text-lg font-semibold text-yellow-500">BEST DEALS</h2>
-      <div class="flex items-center gap-2 mt-2">
-        <button class="arrow text-yellow-500" onclick="scrollSection('bestDeals', -1)">←</button>
-        <div id="bestDeals" class="flex overflow-x-auto gap-4 w-full">
-          <div class="w-full h-64 bg-gray-800 rounded-lg"></div>
+      <!-- Best Deals -->
+      <section class="my-8">
+        <h2 class="text-xl font-semibold text-yellow-500 mb-4">BEST DEALS</h2>
+        <div class="flex items-center gap-2">
+          <button class="arrow text-yellow-500 text-2xl" onclick="scrollSection('bestDeals', -1)">←</button>
+          <div id="bestDeals" class="flex overflow-x-auto gap-4 w-full">
+            <div class="min-w-[300px] h-64 bg-gray-800 rounded-lg relative">
+              <img src="/api/placeholder/300/180" alt="Student laptop deal" class="w-full h-40 object-cover rounded-t-lg">
+              <div class="p-3">
+                <h3 class="text-yellow-400 font-semibold">Student Laptop Bundle</h3>
+                <p class="text-white text-sm">Up to 20% off + free Office 365</p>
+              </div>
+              <div class="absolute top-2 right-2 bg-yellow-600 text-white px-2 py-1 rounded-full text-xs">20% OFF</div>
+            </div>
+            <div class="min-w-[300px] h-64 bg-gray-800 rounded-lg relative">
+              <img src="/api/placeholder/300/180" alt="Headphones deal" class="w-full h-40 object-cover rounded-t-lg">
+              <div class="p-3">
+                <h3 class="text-yellow-400 font-semibold">Premium Headphones</h3>
+                <p class="text-white text-sm">Student discount + free shipping</p>
+              </div>
+              <div class="absolute top-2 right-2 bg-yellow-600 text-white px-2 py-1 rounded-full text-xs">15% OFF</div>
+            </div>
+            <div class="min-w-[300px] h-64 bg-gray-800 rounded-lg relative">
+              <img src="/api/placeholder/300/180" alt="Streaming service" class="w-full h-40 object-cover rounded-t-lg">
+              <div class="p-3">
+                <h3 class="text-yellow-400 font-semibold">Premium Streaming</h3>
+                <p class="text-white text-sm">50% off monthly subscription</p>
+              </div>
+              <div class="absolute top-2 right-2 bg-yellow-600 text-white px-2 py-1 rounded-full text-xs">50% OFF</div>
+            </div>
+            <div class="min-w-[300px] h-64 bg-gray-800 rounded-lg relative">
+              <img src="/api/placeholder/300/180" alt="Smartphone deal" class="w-full h-40 object-cover rounded-t-lg">
+              <div class="p-3">
+                <h3 class="text-yellow-400 font-semibold">Latest Smartphones</h3>
+                <p class="text-white text-sm">Student prices + free accessories</p>
+              </div>
+              <div class="absolute top-2 right-2 bg-yellow-600 text-white px-2 py-1 rounded-full text-xs">10% OFF</div>
+            </div>
+            <div class="min-w-[300px] h-64 bg-gray-800 rounded-lg relative">
+              <img src="/api/placeholder/300/180" alt="Headphones deal" class="w-full h-40 object-cover rounded-t-lg">
+              <div class="p-3">
+                <h3 class="text-yellow-400 font-semibold">Premium Headphones</h3>
+                <p class="text-white text-sm">Student discount + free shipping</p>
+              </div>
+          </div>
+          <button class="arrow text-yellow-500 text-2xl" onclick="scrollSection('bestDeals', 1)">→</button>
         </div>
-        <button class="arrow text-yellow-500" onclick="scrollSection('bestDeals', 1)">→</button>
-      </div>
-    </section>
+      </section>
 
     <!-- Beauty Sections -->
     <section id="beautyBlocks" class="my-10">

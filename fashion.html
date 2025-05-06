@@ -88,8 +88,6 @@
       transform: scale(0.9);
       object-fit: contain;
     }
-    
-    
     /* Gradient section for footer */
     .gradient-section {
       text-align: center;
@@ -114,9 +112,11 @@
       <a href="/faq.html" class="py-2 px-4 mb-2 bg-yellow-600 hover:bg-orange-500 rounded">FAQ</a>
       <a href="#" class="py-2 px-4 mb-2 bg-yellow-600 hover:bg-orange-500 rounded">Blog</a>
     </div>
-    
-    <div class="text-4xl font-bold absolute left-1/2 transform -translate-x-1/2 font-['Poppins'] tracking-tight text-yellow-600">BrokeBro</div>
-    
+
+    <div class="w-full flex justify-center bg-black gap-4 ml-40">
+      <img src="./assests/brokebrologo.jpeg" class="w-40 h-auto">
+    </div>
+
     <div class="relative w-1/3">
       <input type="text" placeholder="Search brands, items, categories"
              class="w-full px-4 py-2 rounded-full bg-white text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200 font-['Poppins'] text-sm tracking-wide"
@@ -198,16 +198,84 @@
   <main class="px-4">
     <h1 class="text-center text-3xl font-bold mt-4 text-yellow-500">FASHION</h1>
     
-  
-    <!-- Best Deals -->
-    <section class="my-6">
-      <h2 class="text-lg font-semibold text-yellow-500">BEST DEALS</h2>
-      <div class="flex items-center gap-2 mt-2">
-        <button class="arrow text-yellow-500" onclick="scrollSection('bestDeals', -1)">←</button>
-        <div id="bestDeals" class="flex overflow-x-auto gap-4 w-full">
-          <div class="w-full h-64 bg-gray-800 rounded-lg"></div>
+  <!-- Top Brands -->
+  <section class="mb-6 w-full">
+    <h2 class="text-xl font-bold mb-4 px-4 text-yellow-500">TOP BRANDS</h2>
+    <div class="flex items-center justify-between px-4 gap-2 w-full">
+      <button class="text-2xl text-yellow-500">←</button>
+      <div class="flex gap-6 overflow-x-auto w-full justify-evenly">
+        <div class="brand-circle">
+          <img src="./assests/MAC.png" alt="MAC" class="bg-white">
         </div>
-        <button class="arrow text-yellow-500" onclick="scrollSection('bestDeals', 1)">→</button>
+        <div class="brand-circle">
+          <img src="./assests/loreal.jpg" alt="L'Oreal" class="bg-white">
+        </div>
+        <div class="brand-circle sugar-logo">
+          <img src="./assests/sugar.png" alt="Sugar" class="bg-white">
+        </div>
+        <div class="brand-circle">
+          <img src="./assests/bodyshop.jpg" alt="Body Shop" class="bg-white">
+        </div>
+        <div class="brand-circle">
+          <img src="./assests/Chanel.png" alt="Chanel" class="bg-white">
+        </div>
+        <div class="brand-circle">
+          <img src="./assests/nivea.png" alt="Nivea" class="bg-white">
+        </div>
+        <div class="brand-circle">
+          <img src="./assests/swiss.jpeg" alt="Swiss Beauty" class="bg-white">
+        </div>
+      </div>
+      <button class="text-2xl text-yellow-500">→</button>
+    </div>
+  </section>
+
+    <!-- Best Deals -->
+    <section class="my-8">
+      <h2 class="text-xl font-semibold text-yellow-500 mb-4">BEST DEALS</h2>
+      <div class="flex items-center gap-2">
+        <button class="arrow text-yellow-500 text-2xl" onclick="scrollSection('bestDeals', -1)">←</button>
+        <div id="bestDeals" class="flex overflow-x-auto gap-4 w-full">
+          <div class="min-w-[300px] h-64 bg-gray-800 rounded-lg relative">
+            <img src="/api/placeholder/300/180" alt="Student laptop deal" class="w-full h-40 object-cover rounded-t-lg">
+            <div class="p-3">
+              <h3 class="text-yellow-400 font-semibold">Student Laptop Bundle</h3>
+              <p class="text-white text-sm">Up to 20% off + free Office 365</p>
+            </div>
+            <div class="absolute top-2 right-2 bg-yellow-600 text-white px-2 py-1 rounded-full text-xs">20% OFF</div>
+          </div>
+          <div class="min-w-[300px] h-64 bg-gray-800 rounded-lg relative">
+            <img src="/api/placeholder/300/180" alt="Headphones deal" class="w-full h-40 object-cover rounded-t-lg">
+            <div class="p-3">
+              <h3 class="text-yellow-400 font-semibold">Premium Headphones</h3>
+              <p class="text-white text-sm">Student discount + free shipping</p>
+            </div>
+            <div class="absolute top-2 right-2 bg-yellow-600 text-white px-2 py-1 rounded-full text-xs">15% OFF</div>
+          </div>
+          <div class="min-w-[300px] h-64 bg-gray-800 rounded-lg relative">
+            <img src="/api/placeholder/300/180" alt="Streaming service" class="w-full h-40 object-cover rounded-t-lg">
+            <div class="p-3">
+              <h3 class="text-yellow-400 font-semibold">Premium Streaming</h3>
+              <p class="text-white text-sm">50% off monthly subscription</p>
+            </div>
+            <div class="absolute top-2 right-2 bg-yellow-600 text-white px-2 py-1 rounded-full text-xs">50% OFF</div>
+          </div>
+          <div class="min-w-[300px] h-64 bg-gray-800 rounded-lg relative">
+            <img src="/api/placeholder/300/180" alt="Smartphone deal" class="w-full h-40 object-cover rounded-t-lg">
+            <div class="p-3">
+              <h3 class="text-yellow-400 font-semibold">Latest Smartphones</h3>
+              <p class="text-white text-sm">Student prices + free accessories</p>
+            </div>
+            <div class="absolute top-2 right-2 bg-yellow-600 text-white px-2 py-1 rounded-full text-xs">10% OFF</div>
+          </div>
+          <div class="min-w-[300px] h-64 bg-gray-800 rounded-lg relative">
+            <img src="/api/placeholder/300/180" alt="Headphones deal" class="w-full h-40 object-cover rounded-t-lg">
+            <div class="p-3">
+              <h3 class="text-yellow-400 font-semibold">Premium Headphones</h3>
+              <p class="text-white text-sm">Student discount + free shipping</p>
+            </div>
+        </div>
+        <button class="arrow text-yellow-500 text-2xl" onclick="scrollSection('bestDeals', 1)">→</button>
       </div>
     </section>
 
