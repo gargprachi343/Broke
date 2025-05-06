@@ -9,7 +9,18 @@
 .arrow {
   @apply text-xl bg-green-800 text-white px-3 py-1 rounded-full hover:bg-green-700;
 }
+.media-scroller {
+  display: grid;
+  gap: var(--size-3);
+  grid-auto-columns: 21%
 
+overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: var(--size-3);
+  margin: var(--size-3) 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gray-300) transparent;
+}
 /* Scroll container custom style if needed */
 .scrollable-container::-webkit-scrollbar {
   height: 6px;
