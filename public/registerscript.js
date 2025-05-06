@@ -1,25 +1,54 @@
-function validateForm() {
-  const email = document.getElementById('email').value.trim();
-  const confirmEmail = document.getElementById('confirmEmail').value.trim();
-  const password = document.getElementById('password').value.trim();
-  const confirmPassword = document.getElementById('confirmPassword').value.trim();
-  const terms = document.getElementById('terms').checked;
+document.getElementById('registerForm').addEventListener('submit', async (event) => {
+  event.preventDefault(); // Prevent form submission
+
+  const email = document.getElementById('email').value;
+  const confirmEmail = document.getElementById('confirmEmail').value;
+  const password = document.getElementById('password').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+  const termsAccepted = document.getElementById('terms').checked;
+
+  // Validate the form
+  if (!email || !confirmEmail || !password || !confirmPassword) {
+    alert('Please fill in all fields.');
+    return;
+  }
 
   if (email !== confirmEmail) {
-    alert("Email addresses do not match.");
-    return false;
+    alert('Email addresses do not match.');
+    return;
   }
 
   if (password !== confirmPassword) {
-    alert("Passwords do not match.");
-    return false;
+    alert('Passwords do not match.');
+    return;
   }
 
-  if (!terms) {
-    alert("You must agree to the terms and policies.");
-    return false;
+  if (!termsAccepted) {
+    alert('You must accept the terms and conditions.');
+    return;
   }
 
-  alert("Registration successful!");
-  return true;
-}
+  try {
+    // Make a POST request to the backend signup API
+    const response = await fetch('http://localhost:3000/api/auth/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: 'New User', email, password }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert(data.message); // Show success message
+      // Redirect to the login page
+      window.location.href = 'loginpage.html';
+    } else {
+      alert(data.message); // Show error message
+    }
+  } catch (error) {
+    console.error('Error during signup:', error);
+    alert('An error occurred. Please try again.');
+  }
+});
