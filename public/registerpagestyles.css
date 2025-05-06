@@ -84,3 +84,28 @@ footer {
   color: #666;
   margin-top: 2rem;
 }
+
+/* Style for the Join now link to match the Log in button */
+.btn-join {
+  display: inline-block;
+  width: 100%;
+  padding: 12px;
+  background-color: #003bff;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-join:hover {
+  background-color: #f97316; /* Orange hover effect to match previous theme */
+}
+
+/* Ensure Log in button has the same hover effect */
+.btn.primary:hover {
+  background-color: #f97316; /* Orange hover effect for consistency */
+}

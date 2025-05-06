@@ -4,45 +4,51 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login - BrokeBro Style</title>
-  <link rel="stylesheet" href="loginstyles.css" />
-</head>
-<body>
-  <header>
-    <h1>BrokeBro</h1>
-  </header>
-
-  <main class="login-container">
-    <h2>Log in to BrokeBro</h2>
-
-    <form id="loginForm" onsubmit="return validateForm()">
-      <div class="form-group">
-        <input type="email" id="email" placeholder="Email address" />
-        <span class="error-message" id="emailError">Required</span>
-      </div>
-
-      <div class="form-group">
-        <input type="password" id="password" placeholder="Password" />
-      </div>
-
-      <div class="captcha-box">
-        <input type="checkbox" id="robotCheck" />
-        <label for="robotCheck">I'm not a robot</label>
-      </div>
-
-      <button type="submit" class="btn login">Log in</button>
-      <button type="button" class="btn join">Join now</button>
-
-      <div class="links">
-        <a href="#">Forgotten your password?</a>
-        <a href="#">Support</a>
-      </div>
-    </form>
-  </main>
-
-  <footer>
-    <p>Copyright © BrokeBro. All rights reserved.</p>
-  </footer>
-
-  <script src="loginscript.js"></script>
-</body>
-</html>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - BrokeBro Style</title>
+    <link rel="stylesheet" href="loginstyles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>BrokeBro</h1>
+    </header>
+  
+    <main class="login-container">
+      <h2>Log in to BrokeBro</h2>
+  
+      <form id="loginForm" onsubmit="return validateForm()">
+        <div class="form-group">
+          <input type="email" id="email" placeholder="Email address" />
+          <span class="error-message" id="emailError">Required</span>
+        </div>
+  
+        <div class="form-group">
+          <input type="password" id="password" placeholder="Password" />
+        </div>
+  
+        <div class="captcha-box">
+          <input type="checkbox" id="robotCheck" />
+          <label for="robotCheck">I'm not a robot</label>
+        </div>
+  
+        <button type="submit" class="btn primary">Log in</button>
+        <button type="button" class="btn primary" onclick="window.location.href='registerpage.html'">Join now</button>
+  
+        <div class="links">
+          <a href="#">Forgotten your password?</a>
+          <a href="#">Support</a>
+        </div>
+      </form>
+    </main>
+  
+    <footer>
+      <p>Copyright © BrokeBro. All rights reserved.</p>
+    </footer>
+  
+    <script src="loginscript.js"></script>
+  </body>
+  </html>
