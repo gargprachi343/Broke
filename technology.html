@@ -472,7 +472,79 @@
     });
   
     document.getElementById("techCategories").innerHTML = techHTML;
-  
+    function handleSearch() {
+  const searchQuery = document.querySelector('input[placeholder="Search brands, items, categories"]').value.trim().toLowerCase();
+
+  if (!searchQuery) {
+    alert('Please enter a search term.');
+    return;
+  }
+
+  let found = false;
+
+  // Filter brands
+  const brands = document.querySelectorAll('#brandsContainer .brand-circle');
+  brands.forEach(brand => {
+    const altText = brand.querySelector('img').alt.toLowerCase();
+    if (altText.includes(searchQuery)) {
+      brand.style.display = 'flex'; // Show matching brand
+      found = true;
+    } else {
+      brand.style.display = 'none'; // Hide non-matching brand
+    }
+  });
+
+  // Filter tech categories and their items
+  const sections = document.querySelectorAll('#techCategories > div');
+  sections.forEach(section => {
+    const sectionTitle = section.querySelector('h2').textContent.toLowerCase();
+    const cards = section.querySelectorAll('.w-72');
+    let cardFound = false;
+
+    cards.forEach(card => {
+      const cardText = card.textContent.toLowerCase();
+      if (cardText.includes(searchQuery)) {
+        card.style.display = 'block'; // Show matching card
+        cardFound = true;
+        found = true;
+      } else {
+        card.style.display = 'none'; // Hide non-matching card
+      }
+    });
+
+    if (sectionTitle.includes(searchQuery) || cardFound) {
+      section.style.display = 'block'; // Show section if title or any card matches
+    } else {
+      section.style.display = 'none'; // Hide section if no match
+    }
+  });
+
+  // Filter best deals
+  const bestDeals = document.querySelectorAll('#bestDeals > div');
+  bestDeals.forEach(deal => {
+    const dealText = deal.textContent.toLowerCase();
+    if (dealText.includes(searchQuery)) {
+      deal.style.display = 'block'; // Show matching deal
+      found = true;
+    } else {
+      deal.style.display = 'none'; // Hide non-matching deal
+    }
+  });
+
+  // Show a message if no results are found
+  if (!found) {
+    alert('No results found for your search.');
+  }
+}
+
+// Add event listeners for search
+document.querySelector('input[placeholder="Search brands, items, categories"]').addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    handleSearch();
+  }
+});
+
+document.querySelector('.fas.fa-search').addEventListener('click', handleSearch);
     // Scroll functions for slider
     function scrollSection(id, direction) {
       document.getElementById(id).scrollBy({ left: direction * 300, behavior: 'smooth' });
