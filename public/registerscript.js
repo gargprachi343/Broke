@@ -38,7 +38,9 @@ document.getElementById('registerForm').addEventListener('submit', async (event)
   if (!validateForm()) return;
 
   const email = document.getElementById('email').value;
+  const confirmEmail = document.getElementById('confirmEmail').value;
   const password = document.getElementById('password').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
 
   try {
     // Make a POST request to the backend signup API
@@ -47,7 +49,7 @@ document.getElementById('registerForm').addEventListener('submit', async (event)
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: 'New User', email, password }),
+      body: JSON.stringify({ email, confirmEmail, password, confirmPassword }),
     });
 
     const data = await response.json();

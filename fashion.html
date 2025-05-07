@@ -118,10 +118,10 @@
     </div>
 
     <div class="relative w-1/3">
-      <input type="text" placeholder="Search brands, items, categories"
+      <input type="text" id="searchInput" placeholder="Search brands, items, categories"
              class="w-full px-4 py-2 rounded-full bg-white text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200 font-['Poppins'] text-sm tracking-wide"
              aria-label="Search" />
-      <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+      <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer" id="searchButton"></i>
     </div>
   </header>
 
@@ -203,7 +203,7 @@
     <h2 class="text-xl font-bold mb-4 px-4 text-yellow-500">TOP BRANDS</h2>
     <div class="flex items-center justify-between px-4 gap-2 w-full">
       <button class="text-2xl text-yellow-500">←</button>
-      <div class="flex gap-6 overflow-x-auto w-full justify-evenly">
+      <div class="flex gap-6 overflow-x-auto w-full justify-evenly" id="brandSection">
         <div class="brand-circle">
           <img src="./assests/MAC.png" alt="MAC" class="bg-white">
         </div>
@@ -422,6 +422,88 @@
   </footer>
 
   <script>
+function handleSearch() {
+  const searchQuery = document.getElementById('searchInput').value.trim().toLowerCase();
+
+  if (!searchQuery) {
+    alert('Please enter a search term.');
+    return;
+  }
+
+  // Hide all brands
+  const brands = document.querySelectorAll('#brandSection .brand-circle');
+  brands.forEach(brand => {
+    brand.style.display = 'none'; // Hide all brands
+  });
+
+  // Hide all fashion sections and their items
+  const sections = document.querySelectorAll('#fashionBlocks > div');
+  sections.forEach(section => {
+    section.style.display = 'none'; // Hide all sections
+    const cards = section.querySelectorAll('.w-72');
+    cards.forEach(card => {
+      card.style.display = 'none'; // Hide all cards
+    });
+  });
+
+  // Hide all best deals
+  const bestDeals = document.querySelectorAll('#bestDeals > div');
+  bestDeals.forEach(deal => {
+    deal.style.display = 'none'; // Hide all deals
+  });
+
+  let found = false;
+
+  // Show matching brands
+  brands.forEach(brand => {
+    const altText = brand.querySelector('img').alt.toLowerCase();
+    if (altText.includes(searchQuery)) {
+      brand.style.display = 'flex'; // Show matching brand
+      found = true;
+    }
+  });
+
+  // Show matching fashion sections and their items
+  sections.forEach(section => {
+    const sectionTitle = section.querySelector('h2').textContent.toLowerCase();
+    const cards = section.querySelectorAll('.w-72');
+    let cardFound = false;
+
+    cards.forEach(card => {
+      const cardText = card.textContent.toLowerCase();
+      if (cardText.includes(searchQuery)) {
+        card.style.display = 'block'; // Show matching card
+        cardFound = true;
+        found = true;
+      }
+    });
+
+    if (sectionTitle.includes(searchQuery) || cardFound) {
+      section.style.display = 'block'; // Show section if title or any card matches
+    }
+  });
+
+  // Show matching best deals
+  bestDeals.forEach(deal => {
+    const dealText = deal.textContent.toLowerCase();
+    if (dealText.includes(searchQuery)) {
+      deal.style.display = 'block'; // Show matching deal
+      found = true;
+    }
+  });
+
+  // Show a message if no results are found
+  if (!found) {
+    alert('No results found for your search.');
+  }
+}
+  // Add event listeners for search
+  document.getElementById('searchInput').addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  });
+
     // Scroll functions for slider
     function scrollSection(id, direction) {
       document.getElementById(id).scrollBy({ left: direction * 300, behavior: 'smooth' });

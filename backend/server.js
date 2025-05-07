@@ -7,9 +7,7 @@ require('dotenv').config();
 // Middleware to parse JSON request bodies
 app.use(express.json());
 app.use(cors());
-// Import and use login routes
-const loginRoutes = require('./routes/loginRoutes');
-app.use('/api/auth', loginRoutes);
+
 
 // Database connection logic
 const connectDB = async () => {
@@ -28,7 +26,9 @@ const connectDB = async () => {
 
 // Connect to the database
 connectDB();
-
+// Import and use login routes
+const loginRoutes = require('./routes/loginRoutes');
+app.use('/api/auth', loginRoutes);
 // Start the server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
