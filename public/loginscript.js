@@ -1,14 +1,31 @@
+// Define the validateForm function
+function validateForm() {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const robotCheck = document.getElementById('robotCheck').checked;
+
+  if (!email || !password) {
+    alert('Please fill in all fields.');
+    return false;
+  }
+
+  if (!robotCheck) {
+    alert('Please confirm you are not a robot.');
+    return false;
+  }
+
+  return true; // Allow form submission
+}
+
+// Add the event listener for form submission
 document.getElementById('loginForm').addEventListener('submit', async (event) => {
   event.preventDefault(); // Prevent form submission
 
+  // Call validateForm and proceed only if it returns true
+  if (!validateForm()) return;
+
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
-
-  // Validate the form
-  if (!email || !password) {
-    alert('Please fill in all fields.');
-    return;
-  }
 
   try {
     // Make a POST request to the backend login API
