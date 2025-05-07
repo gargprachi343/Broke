@@ -1,6 +1,5 @@
-document.getElementById('registerForm').addEventListener('submit', async (event) => {
-  event.preventDefault(); // Prevent form submission
-
+// Define the validateForm function
+function validateForm() {
   const email = document.getElementById('email').value;
   const confirmEmail = document.getElementById('confirmEmail').value;
   const password = document.getElementById('password').value;
@@ -10,23 +9,36 @@ document.getElementById('registerForm').addEventListener('submit', async (event)
   // Validate the form
   if (!email || !confirmEmail || !password || !confirmPassword) {
     alert('Please fill in all fields.');
-    return;
+    return false;
   }
 
   if (email !== confirmEmail) {
     alert('Email addresses do not match.');
-    return;
+    return false;
   }
 
   if (password !== confirmPassword) {
     alert('Passwords do not match.');
-    return;
+    return false;
   }
 
   if (!termsAccepted) {
     alert('You must accept the terms and conditions.');
-    return;
+    return false;
   }
+
+  return true; // Allow form submission
+}
+
+// Add the event listener for form submission
+document.getElementById('registerForm').addEventListener('submit', async (event) => {
+  event.preventDefault(); // Prevent form submission
+
+  // Call validateForm and proceed only if it returns true
+  if (!validateForm()) return;
+
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
 
   try {
     // Make a POST request to the backend signup API
