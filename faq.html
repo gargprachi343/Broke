@@ -5,54 +5,122 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FAQs – BrokeBro Style</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: #000000; /* Black background */
+      color: white; /* White text */
+      font-family: 'Poppins', sans-serif;
+    }
+
+    h1 {
+      color: #ed8a11; /* Yellow for headings */
+    }
+
+    .faq-toggle {
+      background: linear-gradient(to right, #fb9724, #f59e0b); /* Gradient button background */
+      color: #000000; /* Black text */
+      border: none;
+      border-radius: 8px;
+      padding: 12px 16px;
+      transition: background 0.3s ease;
+    }
+
+    .faq-toggle:hover {
+      background: linear-gradient(to right, #f59e0b, #d97706); /* Darker gradient on hover */
+    }
+
+    .faq-content {
+      background-color: #1f2937; /* Dark gray for FAQ content */
+      color: #fef3c7; /* Light yellow text */
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 8px;
+    }
+
+  </style>
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="bg-black font-sans">
   <div class="max-w-3xl mx-auto p-6">
     <h1 class="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h1>
 
-    <div id="faq-container" class="space-y-4">
+    <div id="faq-container" class="space-y-6">
       <!-- Accordion Item -->
-      <div class="border rounded-lg bg-white shadow">
-        <button class="w-full flex justify-between items-center p-4 text-left font-medium text-gray-800 hover:bg-gray-100 faq-toggle">
+      <div class="border rounded-lg bg-gray-800 shadow p-4">
+        <button class="w-full flex justify-between items-center text-left font-medium faq-toggle">
           Who can join BrokeBro?
           <span class="text-xl">+</span>
         </button>
-        <div class="faq-content hidden p-4 text-sm text-gray-700">
+        <div class="faq-content hidden">
           Anyone aged 16 or over and currently enrolled in a college or university is eligible to join BrokeBro.
         </div>
       </div>
 
-      <div class="border rounded-lg bg-white shadow">
-        <button class="w-full flex justify-between items-center p-4 text-left font-medium text-gray-800 hover:bg-gray-100 faq-toggle">
+      <div class="border rounded-lg bg-gray-800 shadow p-4">
+        <button class="w-full flex justify-between items-center text-left font-medium faq-toggle">
           How do I verify my student status?
           <span class="text-xl">+</span>
         </button>
-        <div class="faq-content hidden p-4 text-sm text-gray-700">
+        <div class="faq-content hidden">
           You can verify your student status using a valid school email address or your student portal through our verification partner.
         </div>
       </div>
 
-      <div class="border rounded-lg bg-white shadow">
-        <button class="w-full flex justify-between items-center p-4 text-left font-medium text-gray-800 hover:bg-gray-100 faq-toggle">
+      <div class="border rounded-lg bg-gray-800 shadow p-4">
+        <button class="w-full flex justify-between items-center text-left font-medium faq-toggle">
           Why isn’t my discount code working?
           <span class="text-xl">+</span>
         </button>
-        <div class="faq-content hidden p-4 text-sm text-gray-700">
+        <div class="faq-content hidden">
           Make sure the code hasn’t expired, is applied to eligible items, and that you're logged in. Some discounts may have restrictions.
         </div>
       </div>
 
-      <div class="border rounded-lg bg-white shadow">
-        <button class="w-full flex justify-between items-center p-4 text-left font-medium text-gray-800 hover:bg-gray-100 faq-toggle">
+      <div class="border rounded-lg bg-gray-800 shadow p-4">
+        <button class="w-full flex justify-between items-center text-left font-medium faq-toggle">
           How do I reset my password?
           <span class="text-xl">+</span>
         </button>
-        <div class="faq-content hidden p-4 text-sm text-gray-700">
+        <div class="faq-content hidden">
           Click on “Forgot password” at login, and follow the instructions to reset via your registered email.
         </div>
       </div>
     </div>
   </div>
+
+ 
+  <!-- Footer -->
+  <footer class="bg-gradient-to-b from-yellow-700 to-black text-white py-8 mt-12">
+    <div class="flex flex-col items-center gap-4 text-sm">
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-yellow-400 transition duration-300">Contact</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">Corporate</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">Press</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">Careers</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div class="text-3xl font-bold text-yellow-500">B</div>
+        <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="h-10"></a>
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="h-10"></a>
+      </div>
+
+      <p class="text-base text-yellow-400">⭐⭐⭐⭐⭐ Rating</p>
+
+      <div class="flex gap-4 text-lg">
+        <a href="#" aria-label="LinkedIn" class="hover:text-yellow-400 transition duration-300"><i class="fab fa-linkedin"></i></a>
+        <a href="#" aria-label="Instagram" class="hover:text-yellow-400 transition duration-300"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook" class="hover:text-yellow-400 transition duration-300"><i class="fab fa-facebook"></i></a>
+      </div>
+
+      <div class="text-xs mt-4 flex flex-wrap justify-center gap-3 text-yellow-300">
+        <a href="#" class="hover:text-yellow-400 transition duration-300">SUPPORT</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">TERMS OF SERVICE</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">COOKIE POLICY</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">COOKIE SETTINGS</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">PRIVACY POLICY</a>
+      </div>
+    </div>
+  </footer>
 
   <script>
     document.querySelectorAll(".faq-toggle").forEach(button => {

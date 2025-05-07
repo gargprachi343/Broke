@@ -1,54 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login - BrokeBro Style</title>
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - BrokeBro Style</title>
-    <link rel="stylesheet" href="loginstyles.css" />
-  </head>
-  <body>
-    <header>
-      <h1>BrokeBro</h1>
-    </header>
-  
-    <main class="login-container">
-      <h2>Log in to BrokeBro</h2>
-  
-      <form id="loginForm" onsubmit="return validateForm()">
-        <div class="form-group">
-          <input type="email" id="email" placeholder="Email address" />
-          <span class="error-message" id="emailError">Required</span>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - BrokeBro</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Montserrat:wght@500&family=Playfair+Display:wght@700&family=Roboto:wght@400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000000;
+      color: white;
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+    }
+
+    header {
+      background-color: #000000;
+    }
+
+    h2, h3 {
+      color: #e4a00e;
+    }
+
+    .form-input:focus {
+      border-color: #e4a00e;
+      box-shadow: 0 0 0 3px rgba(228, 160, 14, 0.3);
+    }
+
+    .btn-primary {
+      background-color: #e4a00e;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #f59e0b;
+    }
+
+    .error-message {
+      color: #ef4444;
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+
+    .sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 50;
+    }
+
+    .sidebar.open {
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body class="bg-black text-white min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-black text-white px-6 py-4 flex justify-between items-center relative border-b border-gray-800">
+    <button id="menuButton" class="text-2xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar fixed top-0 left-0 h-full w-64 bg-black text-white flex flex-col p-4">
+      <button id="closeButton" class="self-end text-xl mb-4">
+        <i class="fas fa-times"></i>
+      </button>
+      <a href="/public/loginpage.html" class="py-2 px-4 mb-2 bg-yellow-600 hover:bg-orange-500 rounded">Sign in</a>
+      <a href="/aboutus.html" class="py-2 px-4 mb-2 bg-yellow-600 hover:bg-orange-500 rounded">About Us</a>
+      <a href="/faq.html" class="py-2 px-4 mb-2 bg-yellow-600 hover:bg-orange-500 rounded">FAQ</a>
+      <a href="#" class="py-2 px-4 mb-2 bg-yellow-600 hover:bg-orange-500 rounded">Blog</a>
+    </div>
+    
+    <div class="text-4xl font-bold absolute left-1/2 transform -translate-x-1/2 font-['Poppins'] tracking-tight text-yellow-600">BrokeBro</div>
+    
+    <div class="invisible">
+      <i class="fas fa-search"></i>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow flex flex-col items-center justify-center px-4 py-10">
+    <div class="bg-gray-900 w-full max-w-md rounded-xl shadow-lg border border-gray-800 p-8">
+      <h2 class="text-2xl font-bold text-yellow-500 mb-6 text-center">Log in to BrokeBro</h2>
+      
+      <form id="loginForm" class="space-y-5">
+        <div class="space-y-1">
+          <label for="email" class="block text-sm font-medium text-gray-300">Email address</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" 
+            placeholder="Enter your email"
+            required
+          />
+          <span id="emailError" class="error-message">Email is required</span>
         </div>
-  
-        <div class="form-group">
-          <input type="password" id="password" placeholder="Password" />
+        
+        <div class="space-y-1">
+          <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" 
+            placeholder="Enter your password"
+            required
+          />
+          <span id="passwordError" class="error-message">Password is required</span>
         </div>
-  
-        <div class="captcha-box">
-          <input type="checkbox" id="robotCheck" />
-          <label for="robotCheck">I'm not a robot</label>
+        
+        <div class="flex items-center bg-gray-800 p-3 rounded-lg border border-gray-700">
+          <input type="checkbox" id="robotCheck" class="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-700 rounded" />
+          <label for="robotCheck" class="ml-2 block text-sm text-gray-300">I'm not a robot</label>
         </div>
-  
-        <button type="submit" class="btn primary">Log in</button>
-        <button type="button" class="btn primary" onclick="window.location.href='registerpage.html'">Join now</button>
-  
-        <div class="links">
-          <a href="#">Forgotten your password?</a>
-          <a href="#">Support</a>
+        
+        <button 
+          type="submit" 
+          class="btn-primary w-full py-3 px-4 rounded-lg font-medium text-white bg-yellow-600 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors"
+        >
+          Log in
+        </button>
+        
+        <button 
+          type="button" 
+          onclick="window.location.href='registerpage.html'" 
+          class="w-full py-3 px-4 rounded-lg font-medium text-yellow-600 bg-transparent hover:bg-gray-800 border border-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors"
+        >
+          Join now
+        </button>
+        
+        <div class="flex justify-between text-sm">
+          <a href="#" class="text-yellow-500 hover:text-yellow-400 transition">Forgot password?</a>
+          <a href="#" class="text-yellow-500 hover:text-yellow-400 transition">Support</a>
         </div>
       </form>
-    </main>
-  
-    <footer>
-      <p>Copyright © BrokeBro. All rights reserved.</p>
-    </footer>
-  
-    <script src="loginscript.js"></script>
-  </body>
-  </html>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-b from-yellow-600 to-black text-white py-6 mt-auto">
+    <div class="flex flex-col items-center gap-4 text-sm">
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-yellow-400 transition duration-300">Contact</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">Corporate</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">Press</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">Careers</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div class="text-3xl font-bold text-yellow-500">B</div>
+        <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="h-10"></a>
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="h-10"></a>
+      </div>
+
+      <div class="text-xs mt-4 flex flex-wrap justify-center gap-3 text-yellow-300">
+        <a href="#" class="hover:text-yellow-400 transition duration-300">SUPPORT</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">TERMS OF SERVICE</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">COOKIE POLICY</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">COOKIE SETTINGS</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">PRIVACY POLICY</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sidebar toggle functionality
+    const menuButton = document.getElementById('menuButton');
+    const sidebar = document.getElementById('sidebar');
+    const closeButton = document.getElementById('closeButton');
+
+    menuButton.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+
+    closeButton.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+    });
+    
+    // Form validation
+    const loginForm = document.getElementById('loginForm');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+    
+    loginForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      let isValid = true;
+      
+      // Email validation
+      if (!emailInput.value.trim()) {
+        emailError.style.display = 'block';
+        emailError.textContent = 'Email is required';
+        isValid = false;
+      } else if (!isValidEmail(emailInput.value.trim())) {
+        emailError.style.display = 'block';
+        emailError.textContent = 'Please enter a valid email address';
+        isValid = false;
+      } else {
+        emailError.style.display = 'none';
+      }
+      
+      // Password validation
+      if (!passwordInput.value.trim()) {
+        passwordError.style.display = 'block';
+        passwordError.textContent = 'Password is required';
+        isValid = false;
+      } else {
+        passwordError.style.display = 'none';
+      }
+      
+      if (isValid) {
+        // Form submission logic would go here
+        alert('Login successful!');
+        // Redirect to home page or dashboard
+        // window.location.href = 'dashboard.html';
+      }
+    });
+    
+    // Email validation helper function
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+    
+    // Input event listeners to clear errors when typing
+    emailInput.addEventListener('input', function() {
+      emailError.style.display = 'none';
+    });
+    
+    passwordInput.addEventListener('input', function() {
+      passwordError.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
