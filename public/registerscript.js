@@ -1,68 +1,193 @@
-// Define the validateForm function
-function validateForm() {
-  const email = document.getElementById('email').value;
-  const confirmEmail = document.getElementById('confirmEmail').value;
-  const password = document.getElementById('password').value;
-  const confirmPassword = document.getElementById('confirmPassword').value;
-  const termsAccepted = document.getElementById('terms').checked;
+document.addEventListener('DOMContentLoaded', () => {
+  // Sidebar toggle functionality
+  const menuButton = document.getElementById('menuButton');
+  const sidebar = document.getElementById('sidebar');
+  const closeButton = document.getElementById('closeButton');
 
-  // Validate the form
-  if (!email || !confirmEmail || !password || !confirmPassword) {
-    alert('Please fill in all fields.');
-    return false;
-  }
-
-  if (email !== confirmEmail) {
-    alert('Email addresses do not match.');
-    return false;
-  }
-
-  if (password !== confirmPassword) {
-    alert('Passwords do not match.');
-    return false;
-  }
-
-  if (!termsAccepted) {
-    alert('You must accept the terms and conditions.');
-    return false;
-  }
-
-  return true; // Allow form submission
-}
-
-// Add the event listener for form submission
-document.getElementById('registerForm').addEventListener('submit', async (event) => {
-  event.preventDefault(); // Prevent form submission
-
-  // Call validateForm and proceed only if it returns true
-  if (!validateForm()) return;
-
-  const email = document.getElementById('email').value;
-  const confirmEmail = document.getElementById('confirmEmail').value;
-  const password = document.getElementById('password').value;
-  const confirmPassword = document.getElementById('confirmPassword').value;
-
-  try {
-    // Make a POST request to the backend signup API
-    const response = await fetch('http://localhost:3000/api/auth/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, confirmEmail, password, confirmPassword }),
+  if (menuButton && sidebar && closeButton) {
+    menuButton.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
     });
 
-    const data = await response.json();
-
-    if (response.ok) {
-      alert(data.message); // Show success message
-      // Redirect to the login page
-      window.location.href = 'loginpage.html';
-    } else {
-      alert(data.message); // Show error message
-    }
-  } catch (error) {
-    console.error('Error during signup:', error);
-    alert('An error occurred. Please try again.');
+    closeButton.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+    });
   }
+
+  // Form elements
+  const registerForm = document.getElementById('registerForm');
+  const emailInput = document.getElementById('email');
+  const confirmEmailInput = document.getElementById('confirmEmail');
+  const usernameInput = document.getElementById('username');
+  const passwordInput = document.getElementById('password');
+  const confirmPasswordInput = document.getElementById('confirmPassword');
+  const termsCheckbox = document.getElementById('terms');
+
+  // Error message elements
+  const emailError = document.getElementById('emailError');
+  const confirmEmailError = document.getElementById('confirmEmailError');
+  const usernameError = document.getElementById('usernameError');
+  const passwordError = document.getElementById('passwordError');
+  const confirmPasswordError = document.getElementById('confirmPasswordError');
+
+  // Success container elements
+  const successContainer = document.getElementById('successContainer');
+  const qrCodeImage = document.getElementById('qrCodeImage');
+
+  // Validate form function
+  function validateForm() {
+    let isValid = true;
+
+    // Email validation
+    if (!emailInput.value.trim()) {
+      emailError.style.display = 'block';
+      emailError.textContent = 'Email is required';
+      isValid = false;
+    } else if (!isValidEmail(emailInput.value.trim())) {
+      emailError.style.display = 'block';
+      emailError.textContent = 'Please enter a valid email address';
+      isValid = false;
+    } else {
+      emailError.style.display = 'none';
+    }
+
+    // Confirm email validation
+    if (!confirmEmailInput.value.trim()) {
+      confirmEmailError.style.display = 'block';
+      confirmEmailError.textContent = 'Please confirm your email';
+      isValid = false;
+    } else if (confirmEmailInput.value.trim() !== emailInput.value.trim()) {
+      confirmEmailError.style.display = 'block';
+      confirmEmailError.textContent = 'Emails do not match';
+      isValid = false;
+    } else {
+      confirmEmailError.style.display = 'none';
+    }
+
+    // Username validation
+    if (!usernameInput.value.trim()) {
+      usernameError.style.display = 'block';
+      usernameError.textContent = 'Username is required';
+      isValid = false;
+    } else if (usernameInput.value.length < 3) {
+      usernameError.style.display = 'block';
+      usernameError.textContent = 'Username must be at least 3 characters';
+      isValid = false;
+    } else {
+      usernameError.style.display = 'none';
+    }
+
+    // Password validation
+    if (!passwordInput.value.trim()) {
+      passwordError.style.display = 'block';
+      passwordError.textContent = 'Password is required';
+      isValid = false;
+    } else if (passwordInput.value.length < 8) {
+      passwordError.style.display = 'block';
+      passwordError.textContent = 'Password must be at least 8 characters';
+      isValid = false;
+    } else {
+      passwordError.style.display = 'none';
+    }
+
+    // Confirm password validation
+    if (!confirmPasswordInput.value.trim()) {
+      confirmPasswordError.style.display = 'block';
+      confirmPasswordError.textContent = 'Please confirm your password';
+      isValid = false;
+    } else if (confirmPasswordInput.value.trim() !== passwordInput.value.trim()) {
+      confirmPasswordError.style.display = 'block';
+      confirmPasswordError.textContent = 'Passwords do not match';
+      isValid = false;
+    } else {
+      confirmPasswordError.style.display = 'none';
+    }
+
+    // Terms validation
+    if (!termsCheckbox.checked) {
+      isValid = false;
+      alert('You must accept the Terms of Service to continue');
+    }
+
+    return isValid;
+  }
+
+  // Email validation helper function
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  // Form submission handler
+  registerForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    if (!validateForm()) return;
+
+    const formData = {
+      email: emailInput.value.trim(),
+      confirmEmail: confirmEmailInput.value.trim(),
+      username: usernameInput.value.trim(),
+      password: passwordInput.value.trim(),
+      confirmPassword: confirmPasswordInput.value.trim(),
+    };
+
+    try {
+      const response = await fetch('http://localhost:3000/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // Debug QR code value
+        console.log('QR Code Data URL:', result.qrCode);
+
+        // Validate qrCode format
+        if (result.qrCode && result.qrCode.startsWith('data:image/png;base64,')) {
+          // Clear any previous src to avoid conflicts
+          qrCodeImage.src = '';
+          // Set the QR code image source
+          qrCodeImage.src = result.qrCode;
+          // Show success container
+          registerForm.classList.add('hidden');
+          successContainer.classList.remove('hidden');
+        } else {
+          console.error('Invalid QR code data:', result.qrCode);
+          alert('Error: Invalid QR code received from server. Please try again.');
+        }
+      } else {
+        console.error('Registration failed:', result.message);
+        alert(result.message || 'Registration failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error during signup:', error);
+      alert('An error occurred. Please try again later.');
+    }
+  });
+
+  // Clear error messages on input
+  emailInput.addEventListener('input', () => {
+    emailError.style.display = 'none';
+  });
+
+  confirmEmailInput.addEventListener('input', () => {
+    confirmEmailError.style.display = 'none';
+  });
+
+  usernameInput.addEventListener('input', () => {
+    usernameError.style.display = 'none';
+  });
+
+  passwordInput.addEventListener('input', () => {
+    passwordError.style.display = 'none';
+  });
+
+  confirmPasswordInput.addEventListener('input', () => {
+    confirmPasswordError.style.display = 'none';
+  });
 });

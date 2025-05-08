@@ -67,7 +67,7 @@
 <body class="bg-black text-white min-h-screen flex flex-col">
 
   <!-- Header -->
-  <header class="bg-black text-white px-6 py-4 flex justify-between items-center relative border-b border-gray-800">
+  <header class="bg-black textMortgage-white px-6 py-4 flex justify-between items-center relative border-b border-gray-800">
     <button id="menuButton" class="text-2xl focus:outline-none">
       <i class="fas fa-bars"></i>
     </button>
@@ -100,6 +100,17 @@
         Get student discounts on all your fave brands – for free!
       </p>
       
+      <!-- Success Container (Initially Hidden) -->
+      <div id="successContainer" class="hidden text-center space-y-4">
+        <h3 class="text-xl font-bold text-yellow-500">Registration Successful!</h3>
+        <p class="text-gray-300">Your unique QR code is ready. Scan it to access your profile.</p>
+        <img id="qrCodeImage" src="" alt="User QR Code" class="mx-auto w-48 h-48">
+        <a href="dashboard.html" class="btn-primary inline-block py-3 px-4 rounded-lg font-medium text-white bg-yellow-600 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors">
+          Go to Dashboard
+        </a>
+      </div>
+      
+      <!-- Form -->
       <form id="registerForm" class="space-y-5">
         <div class="space-y-1">
           <input 
@@ -123,6 +134,18 @@
             required
           />
           <span id="confirmEmailError" class="error-message">Please confirm your email</span>
+        </div>
+        
+        <div class="space-y-1">
+          <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" 
+            placeholder="Username"
+            required
+          />
+          <span id="usernameError" class="error-message">Username is required</span>
         </div>
         
         <div class="space-y-1">
@@ -209,125 +232,6 @@
     </div>
   </footer>
 
-  <script>
-    // Sidebar toggle functionality
-    const menuButton = document.getElementById('menuButton');
-    const sidebar = document.getElementById('sidebar');
-    const closeButton = document.getElementById('closeButton');
-
-    menuButton.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-    });
-
-    closeButton.addEventListener('click', () => {
-      sidebar.classList.remove('open');
-    });
-    
-    // Form validation
-    const registerForm = document.getElementById('registerForm');
-    const emailInput = document.getElementById('email');
-    const confirmEmailInput = document.getElementById('confirmEmail');
-    const passwordInput = document.getElementById('password');
-    const confirmPasswordInput = document.getElementById('confirmPassword');
-    const termsCheckbox = document.getElementById('terms');
-    
-    const emailError = document.getElementById('emailError');
-    const confirmEmailError = document.getElementById('confirmEmailError');
-    const passwordError = document.getElementById('passwordError');
-    const confirmPasswordError = document.getElementById('confirmPasswordError');
-    
-    registerForm.addEventListener('submit', function(event) {
-      event.preventDefault();
-      let isValid = true;
-      
-      // Email validation
-      if (!emailInput.value.trim()) {
-        emailError.style.display = 'block';
-        emailError.textContent = 'Email is required';
-        isValid = false;
-      } else if (!isValidEmail(emailInput.value.trim())) {
-        emailError.style.display = 'block';
-        emailError.textContent = 'Please enter a valid email address';
-        isValid = false;
-      } else {
-        emailError.style.display = 'none';
-      }
-      
-      // Confirm email validation
-      if (!confirmEmailInput.value.trim()) {
-        confirmEmailError.style.display = 'block';
-        confirmEmailError.textContent = 'Please confirm your email';
-        isValid = false;
-      } else if (confirmEmailInput.value.trim() !== emailInput.value.trim()) {
-        confirmEmailError.style.display = 'block';
-        confirmEmailError.textContent = 'Emails do not match';
-        isValid = false;
-      } else {
-        confirmEmailError.style.display = 'none';
-      }
-      
-      // Password validation
-      if (!passwordInput.value.trim()) {
-        passwordError.style.display = 'block';
-        passwordError.textContent = 'Password is required';
-        isValid = false;
-      } else if (passwordInput.value.length < 8) {
-        passwordError.style.display = 'block';
-        passwordError.textContent = 'Password must be at least 8 characters';
-        isValid = false;
-      } else {
-        passwordError.style.display = 'none';
-      }
-      
-      // Confirm password validation
-      if (!confirmPasswordInput.value.trim()) {
-        confirmPasswordError.style.display = 'block';
-        confirmPasswordError.textContent = 'Please confirm your password';
-        isValid = false;
-      } else if (confirmPasswordInput.value.trim() !== passwordInput.value.trim()) {
-        confirmPasswordError.style.display = 'block';
-        confirmPasswordError.textContent = 'Passwords do not match';
-        isValid = false;
-      } else {
-        confirmPasswordError.style.display = 'none';
-      }
-      
-      // Terms validation
-      if (!termsCheckbox.checked) {
-        isValid = false;
-        alert('Please accept the Terms of Service to continue');
-      }
-      
-      if (isValid) {
-        // Form submission logic would go here
-        alert('Registration successful!');
-        // Redirect to home page or dashboard
-        // window.location.href = 'dashboard.html';
-      }
-    });
-    
-    // Email validation helper function
-    function isValidEmail(email) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailRegex.test(email);
-    }
-    
-    // Input event listeners to clear errors when typing
-    emailInput.addEventListener('input', function() {
-      emailError.style.display = 'none';
-    });
-    
-    confirmEmailInput.addEventListener('input', function() {
-      confirmEmailError.style.display = 'none';
-    });
-    
-    passwordInput.addEventListener('input', function() {
-      passwordError.style.display = 'none';
-    });
-    
-    confirmPasswordInput.addEventListener('input', function() {
-      confirmPasswordError.style.display = 'none';
-    });
-  </script>
+  <script src="registerscript.js"></script>
 </body>
 </html>
