@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTP Verification - BrokeBro</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Montserrat:wght@500&family=Playfair+Display:wght@700&family=Roboto:wght@400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000000;
+      color: white;
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+    }
+    h2 {
+      color: #e4a00e;
+    }
+    .form-input:focus {
+      border-color: #e4a00e;
+      box-shadow: 0 0 0 3px rgba(228, 160, 14, 0.3);
+    }
+    .btn-primary {
+      background-color: #e4a00e;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #f59e0b;
+    }
+    .error-message {
+      color: #ef4444;
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-black text-white min-h-screen flex flex-col">
+  <main class="flex-grow flex flex-col items-center justify-center px-4 py-10">
+    <div class="bg-gray-900 w-full max-w-lg rounded-xl shadow-lg border border-gray-800 p-8">
+      <h2 class="text-2xl font-bold text-yellow-500 mb-3 text-center">Enter OTP</h2>
+      <p class="text-center text-gray-300 mb-6">
+        Enter the OTP sent to your email to complete college verification.
+      </p>
+      <form id="otpForm" class="space-y-5">
+        <div class="space-y-1">
+          <input 
+            type="text" 
+            id="otp" 
+            name="otp" 
+            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" 
+            placeholder="Enter 6-digit OTP"
+            required
+          />
+          <span id="otpError" class="error-message">OTP is required</span>
+        </div>
+        <button 
+          type="submit" 
+          class="btn-primary w-full py-3 px-4 rounded-lg font-medium text-white bg-yellow-600 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors"
+        >
+          Verify OTP
+        </button>
+      </form>
+    </div>
+  </main>
+  <script src="otp-verification.js"></script>
+</body>
+</html>

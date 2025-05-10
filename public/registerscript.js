@@ -30,10 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const passwordError = document.getElementById('passwordError');
   const confirmPasswordError = document.getElementById('confirmPasswordError');
 
-  // Success container elements
-  const successContainer = document.getElementById('successContainer');
-  const qrCodeImage = document.getElementById('qrCodeImage');
-
   // Validate form function
   function validateForm() {
     let isValid = true;
@@ -144,22 +140,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const result = await response.json();
 
       if (response.ok) {
-        // Debug QR code value
-        console.log('QR Code Data URL:', result.qrCode);
-
-        // Validate qrCode format
-        if (result.qrCode && result.qrCode.startsWith('data:image/png;base64,')) {
-          // Clear any previous src to avoid conflicts
-          qrCodeImage.src = '';
-          // Set the QR code image source
-          qrCodeImage.src = result.qrCode;
-          // Show success container
-          registerForm.classList.add('hidden');
-          successContainer.classList.remove('hidden');
-        } else {
-          console.error('Invalid QR code data:', result.qrCode);
-          alert('Error: Invalid QR code received from server. Please try again.');
-        }
+        // Store userId in localStorage
+        localStorage.setItem('userId', result.userId);
+        alert('Registration successful! Please verify your college.');
+        window.location.href = '/public/verify-college.html';
       } else {
         console.error('Registration failed:', result.message);
         alert(result.message || 'Registration failed. Please try again.');

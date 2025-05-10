@@ -13,51 +13,41 @@
       color: white;
       font-family: 'Poppins', 'Segoe UI', sans-serif;
     }
-
     header {
       background-color: #000000;
     }
-
     h2, h3 {
       color: #e4a00e;
     }
-
     .form-input:focus {
       border-color: #e4a00e;
       box-shadow: 0 0 0 3px rgba(228, 160, 14, 0.3);
     }
-
     .btn-primary {
       background-color: #e4a00e;
       transition: all 0.3s ease;
     }
-
     .btn-primary:hover {
       background-color: #f59e0b;
     }
-
     .error-message {
       color: #ef4444;
       font-size: 0.75rem;
       margin-top: 0.25rem;
       display: none;
     }
-
     .sidebar {
       transform: translateX(-100%);
       transition: transform 0.3s ease-in-out;
       z-index: 50;
     }
-
     .sidebar.open {
       transform: translateX(0);
     }
-    
     a {
       color: #e4a00e;
       text-decoration: none;
     }
-    
     a:hover {
       text-decoration: underline;
       color: #f59e0b;
@@ -65,14 +55,11 @@
   </style>
 </head>
 <body class="bg-black text-white min-h-screen flex flex-col">
-
   <!-- Header -->
   <header class="bg-black textMortgage-white px-6 py-4 flex justify-between items-center relative border-b border-gray-800">
     <button id="menuButton" class="text-2xl focus:outline-none">
       <i class="fas fa-bars"></i>
     </button>
-    
-    <!-- Sidebar -->
     <div id="sidebar" class="sidebar fixed top-0 left-0 h-full w-64 bg-black text-white flex flex-col p-4">
       <button id="closeButton" class="self-end text-xl mb-4">
         <i class="fas fa-times"></i>
@@ -82,35 +69,19 @@
       <a href="/faq.html" class="py-2 px-4 mb-2 bg-yellow-600 hover:bg-orange-500 rounded">FAQ</a>
       <a href="#" class="py-2 px-4 mb-2 bg-yellow-600 hover:bg-orange-500 rounded">Blog</a>
     </div>
-    
     <div class="text-4xl font-bold absolute left-1/2 transform -translate-x-1/2 font-['Poppins'] tracking-tight text-yellow-600">BrokeBro</div>
-    
     <div class="invisible">
       <i class="fas fa-search"></i>
     </div>
   </header>
-
   <!-- Main Content -->
   <main class="flex-grow flex flex-col items-center justify-center px-4 py-10">
     <div class="bg-gray-900 w-full max-w-lg rounded-xl shadow-lg border border-gray-800 p-8">
       <h2 class="text-2xl font-bold text-yellow-500 mb-3 text-center">Join BrokeBro now</h2>
-      
       <p class="text-center text-gray-300 mb-6">
         Studying at college, sixth form or university?<br/>
         Get student discounts on all your fave brands – for free!
       </p>
-      
-      <!-- Success Container (Initially Hidden) -->
-      <div id="successContainer" class="hidden text-center space-y-4">
-        <h3 class="text-xl font-bold text-yellow-500">Registration Successful!</h3>
-        <p class="text-gray-300">Your unique QR code is ready. Scan it to access your profile.</p>
-        <img id="qrCodeImage" src="" alt="User QR Code" class="mx-auto w-48 h-48">
-        <a href="dashboard.html" class="btn-primary inline-block py-3 px-4 rounded-lg font-medium text-white bg-yellow-600 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors">
-          Go to Dashboard
-        </a>
-      </div>
-      
-      <!-- Form -->
       <form id="registerForm" class="space-y-5">
         <div class="space-y-1">
           <input 
@@ -123,7 +94,6 @@
           />
           <span id="emailError" class="error-message">Email is required</span>
         </div>
-        
         <div class="space-y-1">
           <input 
             type="email" 
@@ -135,7 +105,6 @@
           />
           <span id="confirmEmailError" class="error-message">Please confirm your email</span>
         </div>
-        
         <div class="space-y-1">
           <input 
             type="text" 
@@ -147,7 +116,6 @@
           />
           <span id="usernameError" class="error-message">Username is required</span>
         </div>
-        
         <div class="space-y-1">
           <input 
             type="password" 
@@ -159,7 +127,6 @@
           />
           <span id="passwordError" class="error-message">Password is required</span>
         </div>
-        
         <div class="space-y-1">
           <input 
             type="password" 
@@ -171,7 +138,6 @@
           />
           <span id="confirmPasswordError" class="error-message">Please confirm your password</span>
         </div>
-        
         <div class="flex items-start bg-gray-800 p-4 rounded-lg border border-gray-700">
           <input 
             type="checkbox" 
@@ -186,14 +152,12 @@
             I confirm that I'm 13 years of age or older (and have obtained parental consent), or 18 years of age or older.
           </label>
         </div>
-        
         <button 
           type="submit" 
           class="btn-primary w-full py-3 px-4 rounded-lg font-medium text-white bg-yellow-600 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors"
         >
           Join now
         </button>
-        
         <div class="text-center">
           <a 
             href="loginpage.html" 
@@ -205,7 +169,6 @@
       </form>
     </div>
   </main>
-
   <!-- Footer -->
   <footer class="bg-gradient-to-b from-yellow-600 to-black text-white py-6 mt-auto">
     <div class="flex flex-col items-center gap-4 text-sm">
@@ -215,13 +178,11 @@
         <a href="#" class="hover:text-yellow-200 transition duration-300">Press</a>
         <a href="#" class="hover:text-yellow-200 transition duration-300">Careers</a>
       </div>
-
       <div class="flex items-center gap-3">
         <div class="text-3xl font-bold text-yellow-200">B</div>
         <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="h-10"></a>
         <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="h-10"></a>
       </div>
-
       <div class="text-xs mt-4 flex flex-wrap justify-center gap-3 text-yellow-300">
         <a href="#" class="hover:text-yellow-400 transition duration-300">SUPPORT</a>
         <a href="#" class="hover:text-yellow-400 transition duration-300">TERMS OF SERVICE</a>
@@ -231,7 +192,6 @@
       </div>
     </div>
   </footer>
-
   <script src="registerscript.js"></script>
 </body>
 </html>
