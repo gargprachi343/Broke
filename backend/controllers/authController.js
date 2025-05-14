@@ -4,7 +4,7 @@ const User = require('../models/userModel');
 
 exports.signup = async (req, res) => {
   try {
-    const { email, confirmEmail, password, confirmPassword, username } = req.body;
+    const { email, confirmEmail, password, confirmPassword, username, collegeName } = req.body;
 
     if (email !== confirmEmail) {
       return res.status(400).json({ message: 'Emails do not match' });
@@ -22,7 +22,7 @@ exports.signup = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ email, username, password: hashedPassword });
+    const newUser = new User({ email, username, password: hashedPassword, collegeName });
 
     const qrCodeData = JSON.stringify({
       userId: newUser._id,
@@ -72,6 +72,30 @@ exports.protectDashboard = async (req, res, next) => {
     next();
   } catch (error) {
     console.error('Protect dashboard error:', error);
+    res.status(500).json({ message: 'Internal server error.' });
+  }
+};
+exports.getUserData = async (req, res) => {
+  try {
+    const userId = req.headers['user-id'];
+    if (!userId) {
+      return res.status(400).json({ message: 'User ID is required' });
+    }
+
+    const user = await User.findById(userId).select('username collegeName qrCode');
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+   
+    res.status(200).json({
+      username: user.username,
+      collegeName: user.collegeName || 'Not specified',
+      qrCode: user.qrCode || '',
+    });
+  } catch (error) {
+    console.error('Get user data error:', error);
     res.status(500).json({ message: 'Internal server error.' });
   }
 };

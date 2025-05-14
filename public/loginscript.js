@@ -1,55 +1,80 @@
-// Define the validateForm function
-function validateForm() {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const robotCheck = document.getElementById('robotCheck').checked;
+// Form validation and submission
+const loginForm = document.getElementById('loginForm');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const emailError = document.getElementById('emailError');
+const passwordError = document.getElementById('passwordError');
 
-  if (!email || !password) {
-    alert('Please fill in all fields.');
-    return false;
+loginForm.addEventListener('submit', async function (event) {
+  event.preventDefault();
+  let isValid = true;
+
+  // Email validation
+  if (!emailInput.value.trim()) {
+    emailError.style.display = 'block';
+    emailError.textContent = 'Email is required';
+    isValid = false;
+  } else if (!isValidEmail(emailInput.value.trim())) {
+    emailError.style.display = 'block';
+    emailError.textContent = 'Please enter a valid email address';
+    isValid = false;
+  } else {
+    emailError.style.display = 'none';
   }
 
-  if (!robotCheck) {
-    alert('Please confirm you are not a robot.');
-    return false;
+  // Password validation
+  if (!passwordInput.value.trim()) {
+    passwordError.style.display = 'block';
+    passwordError.textContent = 'Password is required';
+    isValid = false;
+  } else {
+    passwordError.style.display = 'none';
   }
 
-  return true; // Allow form submission
+  if (isValid) {
+    try {
+      const response = await fetch('http://localhost:3000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: emailInput.value.trim(),
+          password: passwordInput.value.trim(),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+     
+       
+        // Store userId in session storage
+        sessionStorage.setItem('userId', data.userId);
+        console.log('User ID:', data.userId);
+              // Redirect to dashboard
+        window.location.href = '/public/dashboard.html';
+      } else {
+        alert(data.message || 'Login failed');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      alert('An error occurred. Please try again.');
+    }
+  }
+});
+
+// Email validation helper function
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
 }
 
-// Add the event listener for form submission
-document.getElementById('loginForm').addEventListener('submit', async (event) => {
-  event.preventDefault(); // Prevent form submission
+// Input event listeners to clear errors when typing
+emailInput.addEventListener('input', function () {
+  emailError.style.display = 'none';
+});
 
-  // Call validateForm and proceed only if it returns true
-  if (!validateForm()) return;
-
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-
-  try {
-    // Make a POST request to the backend login API
-    const response = await fetch('http://localhost:3000/api/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      alert(data.message); // Show success message
-      // Save the token to localStorage or sessionStorage
-      localStorage.setItem('token', data.token);
-      // Redirect to the dashboard or another page
-      window.location.href = 'dashboard.html';
-    } else {
-      alert(data.message); // Show error message
-    }
-  } catch (error) {
-    console.error('Error during login:', error);
-    alert('An error occurred. Please try again.');
-  }
+passwordInput.addEventListener('input', function () {
+  passwordError.style.display = 'none';
 });

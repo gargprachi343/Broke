@@ -7,6 +7,7 @@ const { verifyCollege } = require('../controllers/verificationController'); // L
 // Route for user login
 router.post('/login', authController.login); // Line 7
 router.post('/signup', authController.signup); // Line 8
+router.get('/getUser', authController.getUserData); // Line 8
 router.post('/verify-otp', otpController.verifyOtp); // Line 9
 router.post('/verification', verifyCollege); // Line 10
 module.exports = router;
