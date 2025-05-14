@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrokeBro - Student Discounts</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Montserrat:wght@500&family=Playfair+Display:wght@700&family=Roboto:wght@400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000000;
+      color: white;
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+    }
+
+    header {
+      background-color: #000000;
+    }
+
+    .sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 50;
+    }
+
+    .sidebar.open {
+      transform: translateX(0);
+    }
+
+    h2, h3 {
+      color: #e4a00e;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      min-width: 160px;
+      z-index: 100;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      display: block;
+      text-decoration: none;
+    }
+    
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    
+    /* Brand circle image styling */
+    .brand-circle {
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      padding: 0.5rem;
+    }
+    
+    .brand-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+    
+    /* Specific adjustment for Sugar logo */
+    .brand-circle.sugar-logo img {
+      transform: scale(0.9); /* Slightly scale down to fit better */
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body class="bg-black text-white">
+
+  <!-- Header -->
+  <header class="bg-black text-white px-6 py-4 flex justify-between items-center relative">
+    <button id="menuButton" class="text-2xl focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar fixed top-0 left-0 h-full w-64 bg-black text-white flex flex-col p-4">
+      <button id="closeButton" class="self-end text-xl mb-4">
+        <i class="fas fa-times"></i>
+      </button>
+      <a href="/public/loginpage.html" class="py-2 px-4 mb-2 bg-yellow-600 hover:bg-orange-500 rounded">Sign in</a>
+      <a href="/aboutus.html" class="py-2 px-4 mb-2 bg-yellow-600 hover:bg-orange-500 rounded">About Us</a>
+      <a href="/faq.html" class="py-2 px-4 mb-2 bg-yellow-600 hover:bg-orange-500 rounded">FAQ</a>
+      <a href="#" class="py-2 px-4 mb-2 bg-yellow-600 hover:bg-orange-500 rounded">Blog</a>
+    </div>
+    
+    <div class="text-4xl font-bold absolute left-1/2 transform -translate-x-1/2 font-['Poppins'] tracking-tight text-yellow-600">BrokeBro</div>
+    
+    <div class="relative w-1/3">
+      <input type="text" placeholder="Search brands, items, categories"
+             class="w-full px-4 py-2 rounded-full bg-white text-gray-800 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition duration-200 font-['Poppins'] text-sm tracking-wide"
+             aria-label="Search" />
+      <i class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+    </div>
+  </header>
+
+  <!-- Nav Categories -->
+  <nav class="flex flex-wrap justify-center bg-yellow-600 py-3 gap-3 text-sm font-['Montserrat'] uppercase tracking-wider">
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-300 text-xs font-medium text-black">LEARN & EARN</button>
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-300 text-xs font-medium text-black" onclick="window.location.href='BROKE.html'">JUST IN</button>
+    <div class="dropdown">
+      <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-300 text-xs font-medium text-black" onclick="window.location.href='fashion.html'">FASHION</button>
+      <div class="dropdown-content">
+        <a href="fashion.html#womenswear">Womenswear</a>
+        <a href="fashion.html#menswear">Menswear</a>
+        <a href="fashion.html#shoes">Shoes</a>
+        <a href="fashion.html#accessories">Accessories</a>
+        <a href="fashion.html#lingerie">Lingerie and Underwear</a>
+        <a href="fashion.html#sportswear">Sportswear</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-300 text-xs font-medium text-black" onclick="window.location.href='food.html'">Food & Beverages</button>
+      <div class="dropdown-content">
+        <a href="#">Food Apps</a>
+        <a href="#">Dine In & Restaurants</a>
+        <a href="#">Groceries and Products</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-300 text-xs font-medium text-black" onclick="window.location.href='beauty.html'">BEAUTY</button>
+      <div class="dropdown-content">
+        <a href="#">Make-Up</a>
+        <a href="#">Skincare</a>
+        <a href="#">Haircare & Tools</a>
+        <a href="#">Fragrance</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-300 text-xs font-medium text-black" onclick="window.location.href='health.html'">HEALTH&FITNESS</button>
+      <div class="dropdown-content">
+        <a href="#">Workouts</a>
+        <a href="#">Proteins and Supplements</a>
+        <a href="#">Eyecare</a>
+        <a href="#">Fitness Accessories</a>
+        <a href="#">Wellbeing apps</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-300 text-xs font-medium text-black" onclick="window.location.href='technology.html'">TECHNOLOGY</button>
+      <div class="dropdown-content">
+        <a href="#">Accessories</a>
+        <a href="#">Laptops and Tablets</a>
+        <a href="#">Mobile</a>
+        <a href="#">Gaming</a>
+        <a href="#">Desktops</a>
+        <a href="#">TVs</a>
+        <a href="#">Home Appliances</a>
+        <a href="#">Subscriptions</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-300 text-xs font-medium text-black" onclick="window.location.href='lifestyle.html'">LIFESTYLE</button>
+      <div class="dropdown-content">
+        <a href="#">Travel and Transport</a>
+        <a href="#">Holidays and Hotels</a>
+        <a href="#">Subscriptions</a>
+        <a href="#">Home and Bankings</a>
+        <a href="#">Books and Stationary</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-300 text-xs font-medium text-black" onclick="window.location.href='wellbeing.html'">WELLBEING</button>
+      <div class="dropdown-content">
+        <a href="#">Dental Care</a>
+        <a href="#">Health Care</a>
+        <a href="#">Nutrition</a>
+      </div>
+    </div>
+    <button class="px-4 py-2 bg-white rounded-full shadow hover:bg-yellow-300 text-xs font-medium text-black">ALL</button>
+  </nav>
+
+  <!-- Content Sections -->
+  <main class="px-4">
+    <h1 class="text-center text-3xl font-bold mt-4 text-yellow-500">BEAUTY</h1>
+    <!-- Top Brands -->
+    <section class="mb-6 w-full">
+      <h2 class="text-xl font-bold mb-4 px-4 text-yellow-500">TOP BRANDS</h2>
+      <div class="flex items-center justify-between px-4 gap-2 w-full">
+        <button class="text-2xl text-yellow-500">←</button>
+        <div class="flex gap-6 overflow-x-auto w-full justify-evenly">
+          <div class="brand-circle">
+            <img src="./assests/MAC.png" alt="MAC" class="bg-white">
+          </div>
+          <div class="brand-circle">
+            <img src="./assests/loreal.jpg" alt="L'Oreal" class="bg-white">
+          </div>
+          <div class="brand-circle sugar-logo">
+            <img src="./assests/sugar.png" alt="Sugar" class="bg-white">
+          </div>
+          <div class="brand-circle">
+            <img src="./assests/bodyshop.jpg" alt="Body Shop" class="bg-white">
+          </div>
+          <div class="brand-circle">
+            <img src="./assests/Chanel.png" alt="Chanel" class="bg-white">
+          </div>
+          <div class="brand-circle">
+            <img src="./assests/nivea.png" alt="Nivea" class="bg-white">
+          </div>
+          <div class="brand-circle">
+            <img src="./assests/swiss.jpeg" alt="Swiss Beauty" class="bg-white">
+          </div>
+        </div>
+        <button class="text-2xl text-yellow-500">→</button>
+      </div>
+    </section>
+
+      <!-- Best Deals -->
+      <section class="my-8">
+        <h2 class="text-xl font-semibold text-yellow-500 mb-4">BEST DEALS</h2>
+        <div class="flex items-center gap-2">
+          <button class="arrow text-yellow-500 text-2xl" onclick="scrollSection('bestDeals', -1)">←</button>
+          <div id="bestDeals" class="flex overflow-x-auto gap-4 w-full">
+            <div class="min-w-[300px] h-64 bg-gray-800 rounded-lg relative">
+              <img src="/api/placeholder/300/180" alt="Student laptop deal" class="w-full h-40 object-cover rounded-t-lg">
+              <div class="p-3">
+                <h3 class="text-yellow-400 font-semibold">Student Laptop Bundle</h3>
+                <p class="text-white text-sm">Up to 20% off + free Office 365</p>
+              </div>
+              <div class="absolute top-2 right-2 bg-yellow-600 text-white px-2 py-1 rounded-full text-xs">20% OFF</div>
+            </div>
+            <div class="min-w-[300px] h-64 bg-gray-800 rounded-lg relative">
+              <img src="/api/placeholder/300/180" alt="Headphones deal" class="w-full h-40 object-cover rounded-t-lg">
+              <div class="p-3">
+                <h3 class="text-yellow-400 font-semibold">Premium Headphones</h3>
+                <p class="text-white text-sm">Student discount + free shipping</p>
+              </div>
+              <div class="absolute top-2 right-2 bg-yellow-600 text-white px-2 py-1 rounded-full text-xs">15% OFF</div>
+            </div>
+            <div class="min-w-[300px] h-64 bg-gray-800 rounded-lg relative">
+              <img src="/api/placeholder/300/180" alt="Streaming service" class="w-full h-40 object-cover rounded-t-lg">
+              <div class="p-3">
+                <h3 class="text-yellow-400 font-semibold">Premium Streaming</h3>
+                <p class="text-white text-sm">50% off monthly subscription</p>
+              </div>
+              <div class="absolute top-2 right-2 bg-yellow-600 text-white px-2 py-1 rounded-full text-xs">50% OFF</div>
+            </div>
+            <div class="min-w-[300px] h-64 bg-gray-800 rounded-lg relative">
+              <img src="/api/placeholder/300/180" alt="Smartphone deal" class="w-full h-40 object-cover rounded-t-lg">
+              <div class="p-3">
+                <h3 class="text-yellow-400 font-semibold">Latest Smartphones</h3>
+                <p class="text-white text-sm">Student prices + free accessories</p>
+              </div>
+              <div class="absolute top-2 right-2 bg-yellow-600 text-white px-2 py-1 rounded-full text-xs">10% OFF</div>
+            </div>
+            <div class="min-w-[300px] h-64 bg-gray-800 rounded-lg relative">
+              <img src="/api/placeholder/300/180" alt="Headphones deal" class="w-full h-40 object-cover rounded-t-lg">
+              <div class="p-3">
+                <h3 class="text-yellow-400 font-semibold">Premium Headphones</h3>
+                <p class="text-white text-sm">Student discount + free shipping</p>
+              </div>
+          </div>
+          <button class="arrow text-yellow-500 text-2xl" onclick="scrollSection('bestDeals', 1)">→</button>
+        </div>
+      </section>
+
+    <!-- Beauty Sections -->
+    <section id="beautyBlocks" class="my-10">
+      <script>
+        const beautySections = [
+          {
+            title: "MAKE-UP",
+            cards: [
+              { img: "./makeup1.jpg", heading: "Face Products", subheading: "Flat 30% off on foundations & concealers" },
+              { img: "./makeup2.jpg", heading: "Eye Products", subheading: "Upto 50% off on eyeshadows & liners" },
+              { img: "./makeup3.jpg", heading: "Lip Products", subheading: "Buy 1 Get 1 Free on select lipsticks" },
+              { img: "./makeup4.jpg", heading: "Brushes & Tools", subheading: "Pro tools at 40% off" },
+              { img: "./makeup5.jpg", heading: "Makeup Sets", subheading: "Complete collections from ₹999" }
+            ]
+          },
+          {
+            title: "SKINCARE",
+            cards: [
+              { img: "./skincare1.jpg", heading: "Cleansers", subheading: "Trending cleansers at 40% off" },
+              { img: "./skincare2.jpg", heading: "Moisturizers", subheading: "Hydrating formulas from ₹499" },
+              { img: "./skincare3.jpg", heading: "Serums", subheading: "Active ingredients up to 60% off" },
+              { img: "./skincare4.jpg", heading: "Masks", subheading: "Sheet masks starting ₹99" },
+              { img: "./skincare5.jpg", heading: "Sunscreens", subheading: "Protection with flat 30% off" }
+            ]
+          },
+          {
+            title: "HAIRCARE",
+            cards: [
+              { img: "./haircare1.jpg", heading: "Shampoos", subheading: "Salon quality at home prices" },
+              { img: "./haircare2.jpg", heading: "Conditioners", subheading: "Smooth hair deals up to 45% off" },
+              { img: "./haircare3.jpg", heading: "Hair Treatments", subheading: "Repair solutions available" },
+              { img: "./haircare4.jpg", heading: "Styling Tools", subheading: "Professional tools on sale" },
+              { img: "./haircare5.jpg", heading: "Hair Oils", subheading: "Natural oils starting ₹399" }
+            ]
+          },
+          {
+            title: "FRAGRANCE",
+            cards: [
+              { img: "./fragrance1.jpg", heading: "Women's Perfumes", subheading: "Designer brands with 20% off" },
+              { img: "./fragrance2.jpg", heading: "Men's Colognes", subheading: "Signature scents from ₹999" },
+              { img: "./fragrance3.jpg", heading: "Gift Sets", subheading: "Perfect presents on sale" },
+              { img: "./fragrance4.jpg", heading: "Body Mists", subheading: "Light fragrances up to 35% off" },
+              { img: "./fragrance5.jpg", heading: "Home Fragrances", subheading: "Candles and diffusers" }
+            ]
+          },
+          {
+            title: "ALL BEAUTY",
+            cards: [
+              { img: "./allbeauty1.jpg", heading: "New Arrivals", subheading: "Latest launches from ₹199" },
+              { img: "./allbeauty2.jpg", heading: "Trending Now", subheading: "Most popular items at 30% off" },
+              { img: "./allbeauty3.jpg", heading: "Korean Beauty", subheading: "K-beauty essentials under ₹999" },
+              { img: "./allbeauty4.jpg", heading: "Clean Beauty", subheading: "Natural and organic options" },
+              { img: "./allbeauty5.jpg", heading: "Beauty Tools", subheading: "Must-have accessories" }
+            ]
+          }
+        ];
+
+        let htmlContent = "";
+
+        beautySections.forEach(section => {
+          htmlContent += `
+            <div class="mt-10">
+              <h2 class="text-3xl font-bold text-yellow-500 mb-4 px-4">${section.title}</h2>
+              <div class="flex gap-6 overflow-x-auto px-4 pb-4">
+                ${section.cards.map(card => `
+                  <div class="w-72 h-96 bg-gray-900 rounded-xl shadow-lg flex-shrink-0 overflow-hidden border border-gray-800">
+                    <img src="${card.img}" alt="${card.heading}" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                      <h4 class="text-lg font-semibold mb-1 text-yellow-400">${card.heading}</h4>
+                      <p class="text-sm text-gray-300 mb-3">${card.subheading}</p>
+                      <button class="bg-yellow-600 text-white px-4 py-2 rounded-full text-sm hover:bg-orange-500 transition">Shop Now</button>
+                    </div>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          `;
+        });
+
+        document.getElementById("beautyBlocks").innerHTML = htmlContent;
+      </script>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-b from-yellow-600 to-black text-white py-8 mt-12">
+    <div class="flex flex-col items-center gap-4 text-sm">
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-yellow-400 transition duration-300">Contact</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">Corporate</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">Press</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">Careers</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div class="text-3xl font-bold text-yellow-500">B</div>
+        <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="h-10"></a>
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="h-10"></a>
+      </div>
+
+      <p class="text-base text-yellow-400">⭐⭐⭐⭐⭐ Rating</p>
+
+      <div class="flex gap-4 text-lg">
+        <a href="#" aria-label="LinkedIn" class="hover:text-yellow-400 transition duration-300"><i class="fab fa-linkedin"></i></a>
+        <a href="#" aria-label="Instagram" class="hover:text-yellow-400 transition duration-300"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook" class="hover:text-yellow-400 transition duration-300"><i class="fab fa-facebook"></i></a>
+      </div>
+
+      <div class="text-xs mt-4 flex flex-wrap justify-center gap-3 text-yellow-300">
+        <a href="#" class="hover:text-yellow-400 transition duration-300">SUPPORT</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">TERMS OF SERVICE</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">COOKIE POLICY</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">COOKIE SETTINGS</a>
+        <a href="#" class="hover:text-yellow-400 transition duration-300">PRIVACY POLICY</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll functions for slider
+    function scrollSection(id, direction) {
+      document.getElementById(id).scrollBy({ left: direction * 300, behavior: 'smooth' });
+    }
+    
+    // Sidebar toggle functionality
+    const menuButton = document.getElementById('menuButton');
+    const sidebar = document.getElementById('sidebar');
+    const closeButton = document.getElementById('closeButton');
+
+    menuButton.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+
+    closeButton.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+    });
+  </script>
+</body>
+</html>
