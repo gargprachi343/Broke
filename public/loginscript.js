@@ -53,7 +53,7 @@ loginForm.addEventListener('submit', async function (event) {
         sessionStorage.setItem('userId', data.userId);
         console.log('User ID:', data.userId);
               // Redirect to dashboard
-        window.location.href = '/public/dashboard.html';
+        window.location.href = 'BROKE.html';
       } else {
         alert(data.message || 'Login failed');
       }
