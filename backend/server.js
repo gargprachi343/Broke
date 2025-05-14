@@ -21,11 +21,10 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'user-id'],
   optionsSuccessStatus: 204,
 }));
- app.enableCors();
+
 app.use(express.json());
-//app.use('/uploads', express.static(path.join(__dirname, 'Uploads')));
-  app.use('/uploads', express.static(join(__dirname, '..', 'uploads')));
-  app.use('/public', express.static(join(__dirname, '..', 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'Uploads')));
+ 
   app.use('/api/auth', loginRoutes);
 
 const connectDB = async () => {
