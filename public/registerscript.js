@@ -142,8 +142,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (response.ok) {
         // Store userId in localStorage
         localStorage.setItem('userId', result.userId);
-        alert('Registration successful! Please verify your college.');
-        window.location.href = '/public/verify-college.html';
+        alert('Registration successful!');
+        // Optionally reset the form
+        registerForm.reset();
       } else {
         console.error('Registration failed:', result.message);
         alert(result.message || 'Registration failed. Please try again.');
