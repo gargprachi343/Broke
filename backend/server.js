@@ -15,11 +15,16 @@ app.use((req, res, next) => {
 });
 
 // Simplified CORS configuration
-app.use(cors({
+/*app.use(cors({
   origin: 'http://127.0.0.1:5501',
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'user-id'],
   optionsSuccessStatus: 204,
+}));*/
+app.use(cors({
+  origin: '*', // Allow all origins (for development only, restrict in production)
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true,
 }));
 
 app.use(express.json());

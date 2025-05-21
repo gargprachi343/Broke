@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
   
       try {
-        const response = await fetch('http://localhost:5000/api/auth/verify-otp', {
+        const response = await fetch('https://broke-k41u.onrender.com/api/auth/verify-otp', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
