@@ -54,6 +54,7 @@ exports.login = async (req, res) => {
     }
 
     res.status(200).json({ message: 'Login successful', userId: user._id });
+   console.log('User verified:', user._id );
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ message: 'Internal server error.' });
@@ -68,7 +69,7 @@ exports.protectDashboard = async (req, res, next) => {
     if (!user || user.verificationStatus !== 'verified') {
       return res.status(403).json({ message: 'College verification required' });
     }
-
+   console.log('User verified:', userId);
     next();
   } catch (error) {
     console.error('Protect dashboard error:', error);

@@ -226,7 +226,7 @@
             sessionStorage.setItem('userId', data.userId);
             console.log('Stored userId in sessionStorage:', data.userId);
             // Redirect to dashboard
-            window.location.href = '../BROKE.html';
+            window.location.href = '/dashboard.html';
           } else {
             emailError.style.display = 'block';
             emailError.textContent = data.message || 'Login failed';
