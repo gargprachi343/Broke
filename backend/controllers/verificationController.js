@@ -4,13 +4,14 @@ const path = require('path');
 const User = require('../models/userModel');
 require('dotenv').config();
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, 'Uploads/');
-    },
-    filename: (req, file, cb) => {
-      cb(null, `${req.body.userId}-${Date.now()}${path.extname(file.originalname)}`);
-    },
-  });
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, '..', 'uploads')); // <- fixed here
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${req.body.userId}-${Date.now()}${path.extname(file.originalname)}`);
+  },
+});
+
   const upload = multer({
     storage,
     fileFilter: (req, file, cb) => {
