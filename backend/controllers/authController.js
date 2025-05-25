@@ -2,6 +2,9 @@ const bcrypt = require("bcrypt");
 const QRCode = require("qrcode");
 const User = require("../models/userModel");
 
+const isCollegeEmail = (email) =>
+  email.endsWith(".edu.in") || email.endsWith(".ac.in");
+
 exports.signup = async (req, res) => {
   try {
     const {
@@ -29,6 +32,12 @@ exports.signup = async (req, res) => {
       return res.status(400).json({ message: "Emails do not match" });
     }
 
+    if (!isCollegeEmail(email)) {
+      return res.status(400).json({
+        message: "Email must be from a college domain (.edu.in or .ac.in)",
+      });
+    }
+
     if (password !== confirmPassword) {
       return res.status(400).json({ message: "Passwords do not match" });
     }
@@ -39,39 +48,36 @@ exports.signup = async (req, res) => {
         .json({ message: "Password must be at least 8 characters" });
     }
 
-    if (!email.endsWith(".edu.in") && !email.endsWith(".ac.in")) {
-      return res.status(400).json({
-        message: "Email must be from a college domain (.edu.in or .ac.in)",
-      });
+    const existingEmail = await User.findOne({ email });
+    if (existingEmail) {
+      return res.status(400).json({ message: "Email already registered" });
     }
 
-    const existingUser = await User.findOne({ $or: [{ email }, { username }] });
-    if (existingUser) {
-      return res
-        .status(400)
-        .json({ message: "Email or username already exists" });
+    const existingUsername = await User.findOne({ username });
+    if (existingUsername) {
+      return res.status(400).json({ message: "Username already taken" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
+
+    const qrCodeData = JSON.stringify({ username });
+    const qrCodeImage = await QRCode.toDataURL(qrCodeData);
+
     const newUser = new User({
       email,
       username,
       password: hashedPassword,
       collegeName,
+      qrCode: qrCodeImage,
     });
 
     await newUser.save();
 
-    const qrCodeData = JSON.stringify({
+    res.status(201).json({
+      message: "User registered successfully.",
       userId: newUser._id,
       username: newUser.username,
     });
-    newUser.qrCode = await QRCode.toDataURL(qrCodeData);
-    await newUser.save(); 
-
-    res
-      .status(201)
-      .json({ message: "User registered successfully.", userId: newUser._id });
   } catch (error) {
     console.error("Signup error:", error);
     res.status(500).json({ message: "Internal server error." });
@@ -81,6 +87,11 @@ exports.signup = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
+
+    if (!email || !password)
+      return res
+        .status(400)
+        .json({ message: "Email and password are required" });
 
     const user = await User.findOne({ email });
     if (!user) {
@@ -92,8 +103,12 @@ exports.login = async (req, res) => {
       return res.status(400).json({ message: "Invalid email or password" });
     }
 
-    res.status(200).json({ message: "Login successful", userId: user._id });
-    console.log("User verified:", user._id);
+    res.status(200).json({
+      message: "Login successful",
+      userId: user._id,
+      username: user.username,
+      collegeName: user.collegeName,
+    });
   } catch (error) {
     console.error("Login error:", error);
     res.status(500).json({ message: "Internal server error." });
@@ -103,11 +118,15 @@ exports.login = async (req, res) => {
 exports.protectDashboard = async (req, res, next) => {
   try {
     const userId = req.headers["user-id"];
-    const user = await User.findById(userId);
+    if (!userId) {
+      return res.status(401).json({ message: "Unauthorized access" });
+    }
 
+    const user = await User.findById(userId);
     if (!user || user.verificationStatus !== "verified") {
       return res.status(403).json({ message: "College verification required" });
     }
+
     console.log("User verified:", userId);
     next();
   } catch (error) {
@@ -115,6 +134,7 @@ exports.protectDashboard = async (req, res, next) => {
     res.status(500).json({ message: "Internal server error." });
   }
 };
+
 exports.getUserData = async (req, res) => {
   try {
     const userId = req.headers["user-id"];
