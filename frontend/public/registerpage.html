@@ -1,62 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Join BrokeBro</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Montserrat:wght@500&family=Playfair+Display:wght@700&family=Roboto:wght@400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Montserrat:wght@500&family=Playfair+Display:wght@700&family=Roboto:wght@400;500&family=Bebas+Neue&display=swap"
+    rel="stylesheet">
   <style>
     body {
       background-color: #000000;
       color: white;
       font-family: 'Poppins', 'Segoe UI', sans-serif;
     }
+
     header {
       background-color: #000000;
     }
-    h2, h3 {
+
+    h2,
+    h3 {
       color: #e4a00e;
     }
+
     .form-input:focus {
       border-color: #e4a00e;
       box-shadow: 0 0 0 3px rgba(228, 160, 14, 0.3);
     }
+
     .btn-primary {
       background-color: #e4a00e;
       transition: all 0.3s ease;
     }
+
     .btn-primary:hover {
       background-color: #f59e0b;
     }
+
     .error-message {
       color: #ef4444;
       font-size: 0.75rem;
       margin-top: 0.25rem;
       display: none;
     }
+
     .sidebar {
       transform: translateX(-100%);
       transition: transform 0.3s ease-in-out;
       z-index: 50;
     }
+
     .sidebar.open {
       transform: translateX(0);
     }
+
     a {
       color: #e4a00e;
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
       color: #f59e0b;
     }
   </style>
 </head>
+
 <body class="bg-black text-white min-h-screen flex flex-col">
   <!-- Header -->
-  <header class="bg-black textMortgage-white px-6 py-4 flex justify-between items-center relative border-b border-gray-800">
+  <header
+    class="bg-black textMortgage-white px-6 py-4 flex justify-between items-center relative border-b border-gray-800">
     <button id="menuButton" class="text-2xl focus:outline-none">
       <i class="fas fa-bars"></i>
     </button>
@@ -69,7 +85,9 @@
       <a href="/faq.html" class="py-2 px-4 mb-2 bg-yellow-600 hover:bg-orange-500 rounded">FAQ</a>
       <a href="#" class="py-2 px-4 mb-2 bg-yellow-600 hover:bg-orange-500 rounded">Blog</a>
     </div>
-    <div class="text-4xl font-bold absolute left-1/2 transform -translate-x-1/2 font-['Poppins'] tracking-tight text-yellow-600">BrokeBro</div>
+    <div
+      class="text-4xl font-bold absolute left-1/2 transform -translate-x-1/2 font-['Poppins'] tracking-tight text-yellow-600">
+      BrokeBro</div>
     <div class="invisible">
       <i class="fas fa-search"></i>
     </div>
@@ -79,90 +97,58 @@
     <div class="bg-gray-900 w-full max-w-lg rounded-xl shadow-lg border border-gray-800 p-8">
       <h2 class="text-2xl font-bold text-yellow-500 mb-3 text-center">Join BrokeBro now</h2>
       <p class="text-center text-gray-300 mb-6">
-        Studying at college, sixth form or university?<br/>
+        Studying at college, sixth form or university?<br />
         Get student discounts on all your fave brands – for free!
       </p>
       <form id="registerForm" class="space-y-5">
         <div class="space-y-1">
-          <input 
-            type="email" 
-            id="email" 
-            name="email" 
-            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" 
-            placeholder="Personal email address"
-            required
-          />
+          <input type="email" id="email" name="email"
+            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            placeholder="Personal email address" required />
           <span id="emailError" class="error-message">Email is required</span>
         </div>
         <div class="space-y-1">
-          <input 
-            type="email" 
-            id="confirmEmail" 
-            name="confirmEmail" 
-            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" 
-            placeholder="Confirm personal email address"
-            required
-          />
+          <input type="email" id="confirmEmail" name="confirmEmail"
+            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            placeholder="Confirm personal email address" required />
           <span id="confirmEmailError" class="error-message">Please confirm your email</span>
         </div>
         <div class="space-y-1">
-          <input 
-            type="text" 
-            id="username" 
-            name="username" 
-            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" 
-            placeholder="Username"
-            required
-          />
+          <input type="text" id="username" name="username"
+            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            placeholder="Username" required />
           <span id="usernameError" class="error-message">Username is required</span>
         </div>
         <div class="space-y-1">
-          <input 
-            type="password" 
-            id="password" 
-            name="password" 
-            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" 
-            placeholder="Password"
-            required
-          />
+          <input type="password" id="password" name="password"
+            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            placeholder="Password" required />
           <span id="passwordError" class="error-message">Password is required</span>
         </div>
         <div class="space-y-1">
-          <input 
-            type="password" 
-            id="confirmPassword" 
-            name="confirmPassword" 
-            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" 
-            placeholder="Confirm password"
-            required
-          />
+          <input type="password" id="confirmPassword" name="confirmPassword"
+            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            placeholder="Confirm password" required />
           <span id="confirmPasswordError" class="error-message">Please confirm your password</span>
         </div>
         <div class="flex items-start bg-gray-800 p-4 rounded-lg border border-gray-700">
-          <input 
-            type="checkbox" 
-            id="terms" 
-            name="terms" 
-            class="h-5 w-5 mt-1 text-yellow-600 focus:ring-yellow-500 border-gray-700 rounded"
-            required
-          />
+          <input type="checkbox" id="terms" name="terms"
+            class="h-5 w-5 mt-1 text-yellow-600 focus:ring-yellow-500 border-gray-700 rounded" required />
           <label for="terms" class="ml-3 block text-sm text-gray-300">
-            I accept the BrokeBro <a href="#" class="text-yellow-500 hover:text-yellow-400">Terms of Service</a> and have read and understood the 
-            <a href="#" class="text-yellow-500 hover:text-yellow-400">Privacy Policy</a> and <a href="#" class="text-yellow-500 hover:text-yellow-400">Cookie Policy</a>.
-            I confirm that I'm 13 years of age or older (and have obtained parental consent), or 18 years of age or older.
+            I accept the BrokeBro <a href="#" class="text-yellow-500 hover:text-yellow-400">Terms of Service</a> and
+            have read and understood the
+            <a href="#" class="text-yellow-500 hover:text-yellow-400">Privacy Policy</a> and <a href="#"
+              class="text-yellow-500 hover:text-yellow-400">Cookie Policy</a>.
+            I confirm that I'm 13 years of age or older (and have obtained parental consent), or 18 years of age or
+            older.
           </label>
         </div>
-        <button 
-          type="submit" 
-          class="btn-primary w-full py-3 px-4 rounded-lg font-medium text-white bg-yellow-600 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors"
-        >
+        <button type="submit"
+          class="btn-primary w-full py-3 px-4 rounded-lg font-medium text-white bg-yellow-600 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors">
           Join now
         </button>
         <div class="text-center">
-          <a 
-            href="loginpage.html" 
-            class="text-yellow-500 hover:text-yellow-400 transition font-medium"
-          >
+          <a href="loginpage.html" class="text-yellow-500 hover:text-yellow-400 transition font-medium">
             Log in
           </a>
         </div>
@@ -180,8 +166,10 @@
       </div>
       <div class="flex items-center gap-3">
         <div class="text-3xl font-bold text-yellow-200">B</div>
-        <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="h-10"></a>
-        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="h-10"></a>
+        <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+            alt="App Store" class="h-10"></a>
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+            alt="Google Play" class="h-10"></a>
       </div>
       <div class="text-xs mt-4 flex flex-wrap justify-center gap-3 text-yellow-300">
         <a href="#" class="hover:text-yellow-400 transition duration-300">SUPPORT</a>
@@ -194,4 +182,5 @@
   </footer>
   <script src="registerscript.js"></script>
 </body>
+
 </html>
