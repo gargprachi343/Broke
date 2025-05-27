@@ -1,62 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Join BrokeBro</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Montserrat:wght@500&family=Playfair+Display:wght@700&family=Roboto:wght@400;500&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Montserrat:wght@500&family=Playfair+Display:wght@700&family=Roboto:wght@400;500&family=Bebas+Neue&display=swap"
+    rel="stylesheet">
   <style>
     body {
       background-color: #000000;
       color: white;
       font-family: 'Poppins', 'Segoe UI', sans-serif;
     }
+
     header {
       background-color: #000000;
     }
-    h2, h3 {
+
+    h2,
+    h3 {
       color: #e4a00e;
     }
+
     .form-input:focus {
       border-color: #e4a00e;
       box-shadow: 0 0 0 3px rgba(228, 160, 14, 0.3);
     }
+
     .btn-primary {
       background-color: #e4a00e;
       transition: all 0.3s ease;
     }
+
     .btn-primary:hover {
       background-color: #f59e0b;
     }
+
     .error-message {
       color: #ef4444;
       font-size: 0.75rem;
       margin-top: 0.25rem;
       display: none;
     }
+
+    .success-message {
+      color: #10b981;
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+
     .sidebar {
       transform: translateX(-100%);
       transition: transform 0.3s ease-in-out;
       z-index: 50;
     }
+
     .sidebar.open {
       transform: translateX(0);
     }
+
     a {
       color: #e4a00e;
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
       color: #f59e0b;
     }
+
+    .step-hidden {
+      display: none;
+    }
+
+    .step-visible {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .file-upload-area {
+      border: 2px dashed #4b5563;
+      transition: all 0.3s ease;
+    }
+
+    .file-upload-area:hover {
+      border-color: #e4a00e;
+      background-color: rgba(228, 160, 14, 0.1);
+    }
+
+    .file-upload-area.dragover {
+      border-color: #e4a00e;
+      background-color: rgba(228, 160, 14, 0.1);
+    }
+
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+      transform: translateX(400px);
+      transition: transform 0.3s ease;
+    }
+
+    .notification.show {
+      transform: translateX(0);
+    }
+
+    .otp-input {
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .verification-badge {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
   </style>
 </head>
+
 <body class="bg-black text-white min-h-screen flex flex-col">
-  <!-- Header -->
-  <header class="bg-black textMortgage-white px-6 py-4 flex justify-between items-center relative border-b border-gray-800">
+  <div id="notification" class="notification bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg">
+    <div class="flex items-center">
+      <i class="fas fa-check-circle mr-2"></i>
+      <span id="notificationText">Success!</span>
+    </div>
+  </div>
+
+  <header class="bg-black text-white px-6 py-4 flex justify-between items-center relative border-b border-gray-800">
     <button id="menuButton" class="text-2xl focus:outline-none">
       <i class="fas fa-bars"></i>
     </button>
@@ -69,107 +163,179 @@
       <a href="/faq.html" class="py-2 px-4 mb-2 bg-yellow-600 hover:bg-orange-500 rounded">FAQ</a>
       <a href="#" class="py-2 px-4 mb-2 bg-yellow-600 hover:bg-orange-500 rounded">Blog</a>
     </div>
-    <div class="text-4xl font-bold absolute left-1/2 transform -translate-x-1/2 font-['Poppins'] tracking-tight text-yellow-600">BrokeBro</div>
+    <div
+      class="text-4xl font-bold absolute left-1/2 transform -translate-x-1/2 font-['Poppins'] tracking-tight text-yellow-600">
+      BrokeBro</div>
     <div class="invisible">
       <i class="fas fa-search"></i>
     </div>
   </header>
-  <!-- Main Content -->
+
   <main class="flex-grow flex flex-col items-center justify-center px-4 py-10">
     <div class="bg-gray-900 w-full max-w-lg rounded-xl shadow-lg border border-gray-800 p-8">
-      <h2 class="text-2xl font-bold text-yellow-500 mb-3 text-center">Join BrokeBro now</h2>
-      <p class="text-center text-gray-300 mb-6">
-        Studying at college, sixth form or university?<br/>
-        Get student discounts on all your fave brands – for free!
-      </p>
-      <form id="registerForm" class="space-y-5">
-        <div class="space-y-1">
-          <input 
-            type="email" 
-            id="email" 
-            name="email" 
-            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" 
-            placeholder="Personal email address"
-            required
-          />
-          <span id="emailError" class="error-message">Email is required</span>
+
+      <div id="step1" class="step-visible">
+        <h2 class="text-2xl font-bold text-yellow-500 mb-3 text-center">Join BrokeBro now</h2>
+        <p class="text-center text-gray-300 mb-6">
+          Studying at college, sixth form or university?<br />
+          Get student discounts on all your fave brands – for free!
+        </p>
+        <form id="registerForm" class="space-y-5">
+          <div class="space-y-1">
+            <input type="email" id="email" name="email"
+              class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              placeholder="Email address (.edu or personal)" required />
+            <span id="emailError" class="error-message">Email is required</span>
+            <span id="emailType" class="text-xs text-gray-400 mt-1"></span>
+          </div>
+          <div class="space-y-1">
+            <input type="email" id="confirmEmail" name="confirmEmail"
+              class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              placeholder="Confirm email address" required />
+            <span id="confirmEmailError" class="error-message">Please confirm your email</span>
+          </div>
+          <div class="space-y-1">
+            <input type="text" id="username" name="username"
+              class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              placeholder="Username" required />
+            <span id="usernameError" class="error-message">Username is required</span>
+          </div>
+          <div class="space-y-1">
+            <div class="relative">
+              <input type="password" id="password" name="password"
+                class="form-input w-full px-4 py-3 pr-12 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                placeholder="Password" required />
+              <button type="button" id="togglePassword" class="absolute right-3 top-3 text-gray-400 hover:text-white">
+                <i class="fas fa-eye" id="passwordIcon"></i>
+              </button>
+            </div>
+            <span id="passwordError" class="error-message">Password is required</span>
+            <div id="passwordStrength" class="text-xs mt-1"></div>
+          </div>
+          <div class="space-y-1">
+            <input type="password" id="confirmPassword" name="confirmPassword"
+              class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              placeholder="Confirm password" required />
+            <span id="confirmPasswordError" class="error-message">Please confirm your password</span>
+          </div>
+          <div class="flex items-start bg-gray-800 p-4 rounded-lg border border-gray-700">
+            <input type="checkbox" id="terms" name="terms"
+              class="h-5 w-5 mt-1 text-yellow-600 focus:ring-yellow-500 border-gray-700 rounded" required />
+            <label for="terms" class="ml-3 block text-sm text-gray-300">
+              I accept the BrokeBro <a href="#" class="text-yellow-500 hover:text-yellow-400">Terms of Service</a> and
+              have read and understood the
+              <a href="#" class="text-yellow-500 hover:text-yellow-400">Privacy Policy</a> and <a href="#"
+                class="text-yellow-500 hover:text-yellow-400">Cookie Policy</a>.
+              I confirm that I'm 13 years of age or older (and have obtained parental consent), or 18 years of age or
+              older.
+            </label>
+          </div>
+          <button type="submit"
+            class="btn-primary w-full py-3 px-4 rounded-lg font-medium text-white bg-yellow-600 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors">
+            Continue
+          </button>
+          <div class="text-center">
+            <a href="loginpage.html" class="text-yellow-500 hover:text-yellow-400 transition font-medium">
+              Already have an account? Log in
+            </a>
+          </div>
+        </form>
+      </div>
+
+      <div id="step2" class="step-hidden">
+        <div class="text-center mb-6">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-yellow-600 rounded-full mb-4">
+            <i class="fas fa-envelope text-2xl text-white"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-yellow-500 mb-2">Verify Your Email</h2>
+          <p class="text-gray-300">
+            We've sent a verification code to<br />
+            <span id="emailDisplay" class="text-yellow-500 font-medium"></span>
+          </p>
         </div>
-        <div class="space-y-1">
-          <input 
-            type="email" 
-            id="confirmEmail" 
-            name="confirmEmail" 
-            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" 
-            placeholder="Confirm personal email address"
-            required
-          />
-          <span id="confirmEmailError" class="error-message">Please confirm your email</span>
+        <form id="otpForm" class="space-y-6">
+          <div class="flex justify-center space-x-3">
+            <input type="text" maxlength="1"
+              class="otp-input form-input rounded-lg bg-gray-800 border border-gray-700 text-white text-center focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+            <input type="text" maxlength="1"
+              class="otp-input form-input rounded-lg bg-gray-800 border border-gray-700 text-white text-center focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+            <input type="text" maxlength="1"
+              class="otp-input form-input rounded-lg bg-gray-800 border border-gray-700 text-white text-center focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+            <input type="text" maxlength="1"
+              class="otp-input form-input rounded-lg bg-gray-800 border border-gray-700 text-white text-center focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+            <input type="text" maxlength="1"
+              class="otp-input form-input rounded-lg bg-gray-800 border border-gray-700 text-white text-center focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+            <input type="text" maxlength="1"
+              class="otp-input form-input rounded-lg bg-gray-800 border border-gray-700 text-white text-center focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+          </div>
+          <span id="otpError" class="error-message text-center block">Invalid OTP. Please try again.</span>
+          <button type="submit"
+            class="btn-primary w-full py-3 px-4 rounded-lg font-medium text-white bg-yellow-600 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-colors">
+            Verify OTP
+          </button>
+          <div class="text-center">
+            <button type="button" id="resendOtp" class="text-yellow-500 hover:text-yellow-400 transition font-medium">
+              Didn't receive code? Resend
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div id="step3" class="step-hidden">
+        <div class="text-center mb-6">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-yellow-600 rounded-full mb-4">
+            <i class="fas fa-id-card text-2xl text-white"></i>
+          </div>
+          <h2 class="text-2xl font-bold text-yellow-500 mb-2">Verify Student Status</h2>
+          <p class="text-gray-300">
+            Upload your student ID or college documents<br />
+            to verify your student status
+          </p>
         </div>
-        <div class="space-y-1">
-          <input 
-            type="text" 
-            id="username" 
-            name="username" 
-            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" 
-            placeholder="Username"
-            required
-          />
-          <span id="usernameError" class="error-message">Username is required</span>
+        <form id="documentForm" class="space-y-6">
+          <div class="file-upload-area rounded-lg p-8 text-center cursor-pointer" id="uploadArea">
+            <div class="mb-4">
+              <i class="fas fa-cloud-upload-alt text-4xl text-gray-400"></i>
+            </div>
+            <p class="text-gray-300 mb-2">Drag and drop your files here, or click to browse</p>
+            <p class="text-xs text-gray-500">Accepted formats: JPG, PNG, PDF (max 5MB each)</p>
+            <input type="file" id="fileInput" class="hidden" multiple accept=".jpg,.jpeg,.png,.pdf" />
+          </div>
+          <div id="fileList" class="space-y-2"></div>
+          <span id="uploadError" class="error-message">Please upload at least one document</span>
+          <button type="submit" id="uploadButton"
+            class="btn-primary w-full py-3 px-4 rounded-lg font-medium text-white bg-yellow-600 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-colors disabled:opacity-50"
+            disabled>
+            Submit for Verification
+          </button>
+          <p class="text-xs text-gray-400 text-center">
+            Your documents will be reviewed within 24-48 hours. We'll notify you via email once verification is
+            complete.
+          </p>
+        </form>
+      </div>
+
+      <div id="step4" class="step-hidden text-center">
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-green-600 rounded-full mb-6">
+          <i class="fas fa-check text-3xl text-white"></i>
         </div>
-        <div class="space-y-1">
-          <input 
-            type="password" 
-            id="password" 
-            name="password" 
-            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" 
-            placeholder="Password"
-            required
-          />
-          <span id="passwordError" class="error-message">Password is required</span>
-        </div>
-        <div class="space-y-1">
-          <input 
-            type="password" 
-            id="confirmPassword" 
-            name="confirmPassword" 
-            class="form-input w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" 
-            placeholder="Confirm password"
-            required
-          />
-          <span id="confirmPasswordError" class="error-message">Please confirm your password</span>
-        </div>
-        <div class="flex items-start bg-gray-800 p-4 rounded-lg border border-gray-700">
-          <input 
-            type="checkbox" 
-            id="terms" 
-            name="terms" 
-            class="h-5 w-5 mt-1 text-yellow-600 focus:ring-yellow-500 border-gray-700 rounded"
-            required
-          />
-          <label for="terms" class="ml-3 block text-sm text-gray-300">
-            I accept the BrokeBro <a href="#" class="text-yellow-500 hover:text-yellow-400">Terms of Service</a> and have read and understood the 
-            <a href="#" class="text-yellow-500 hover:text-yellow-400">Privacy Policy</a> and <a href="#" class="text-yellow-500 hover:text-yellow-400">Cookie Policy</a>.
-            I confirm that I'm 13 years of age or older (and have obtained parental consent), or 18 years of age or older.
-          </label>
-        </div>
-        <button 
-          type="submit" 
-          class="btn-primary w-full py-3 px-4 rounded-lg font-medium text-white bg-yellow-600 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-colors"
-        >
-          Join now
-        </button>
-        <div class="text-center">
-          <a 
-            href="loginpage.html" 
-            class="text-yellow-500 hover:text-yellow-400 transition font-medium"
-          >
-            Log in
+        <h2 class="text-2xl font-bold text-green-500 mb-4" id="successTitle">Registration Successful!</h2>
+        <div id="successMessage" class="text-gray-300 mb-6"></div>
+        <div class="space-y-4">
+          <a href="loginpage.html"
+            class="block w-full py-3 px-4 rounded-lg font-medium text-white bg-yellow-600 hover:bg-yellow-500 transition-colors text-center">
+            Go to Login
           </a>
+          <button type="button" onclick="location.reload()"
+            class="block w-full py-3 px-4 rounded-lg font-medium text-gray-300 border border-gray-600 hover:bg-gray-800 transition-colors">
+            Register Another Account
+          </button>
         </div>
-      </form>
+      </div>
+
     </div>
   </main>
-  <!-- Footer -->
+
   <footer class="bg-gradient-to-b from-yellow-600 to-black text-white py-6 mt-auto">
     <div class="flex flex-col items-center gap-4 text-sm">
       <div class="flex gap-4">
@@ -180,8 +346,10 @@
       </div>
       <div class="flex items-center gap-3">
         <div class="text-3xl font-bold text-yellow-200">B</div>
-        <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="h-10"></a>
-        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="h-10"></a>
+        <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+            alt="App Store" class="h-10"></a>
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+            alt="Google Play" class="h-10"></a>
       </div>
       <div class="text-xs mt-4 flex flex-wrap justify-center gap-3 text-yellow-300">
         <a href="#" class="hover:text-yellow-400 transition duration-300">SUPPORT</a>
@@ -192,6 +360,424 @@
       </div>
     </div>
   </footer>
-  <script src="registerscript.js"></script>
+
+  <script>
+    let currentStep = 1;
+    let registrationData = {};
+    let uploadedFiles = [];
+
+    const steps = {
+      1: document.getElementById('step1'),
+      2: document.getElementById('step2'),
+      3: document.getElementById('step3'),
+      4: document.getElementById('step4')
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+      initializeEventListeners();
+      initializeOtpInputs();
+      initializeFileUpload();
+    });
+
+    function initializeEventListeners() {
+      document.getElementById('menuButton').addEventListener('click', function () {
+        document.getElementById('sidebar').classList.add('open');
+      });
+
+      document.getElementById('closeButton').addEventListener('click', function () {
+        document.getElementById('sidebar').classList.remove('open');
+      });
+
+      document.getElementById('email').addEventListener('input', function (e) {
+        const email = e.target.value;
+        const emailType = document.getElementById('emailType');
+
+        if (email.includes('.edu')) {
+          emailType.textContent = '✓ Educational email detected - OTP verification will be used';
+          emailType.className = 'text-xs text-green-400 mt-1';
+        } else if (email.includes('@gmail.com') || email.includes('@yahoo.com') || email.includes('@hotmail.com')) {
+          emailType.textContent = '! Personal email detected - Document verification will be required';
+          emailType.className = 'text-xs text-yellow-400 mt-1';
+        } else {
+          emailType.textContent = '';
+        }
+      });
+
+      document.getElementById('togglePassword').addEventListener('click', function () {
+        const passwordInput = document.getElementById('password');
+        const passwordIcon = document.getElementById('passwordIcon');
+
+        if (passwordInput.type === 'password') {
+          passwordInput.type = 'text';
+          passwordIcon.className = 'fas fa-eye-slash';
+        } else {
+          passwordInput.type = 'password';
+          passwordIcon.className = 'fas fa-eye';
+        }
+      });
+
+      document.getElementById('password').addEventListener('input', function (e) {
+        checkPasswordStrength(e.target.value);
+      });
+
+      document.getElementById('registerForm').addEventListener('submit', handleRegistration);
+      document.getElementById('otpForm').addEventListener('submit', handleOtpVerification);
+      document.getElementById('documentForm').addEventListener('submit', handleDocumentSubmission);
+      document.getElementById('resendOtp').addEventListener('click', resendOtp);
+    }
+
+    function showStep(stepNumber) {
+      Object.values(steps).forEach(step => {
+        step.classList.remove('step-visible');
+        step.classList.add('step-hidden');
+      });
+
+      steps[stepNumber].classList.remove('step-hidden');
+      steps[stepNumber].classList.add('step-visible');
+
+      currentStep = stepNumber;
+    }
+
+    function validateEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+
+    function checkPasswordStrength(password) {
+      const strengthDiv = document.getElementById('passwordStrength');
+      let strength = 0;
+      let feedback = [];
+
+      if (password.length >= 8) strength++;
+      else feedback.push('At least 8 characters');
+
+      if (/[A-Z]/.test(password)) strength++;
+      else feedback.push('One uppercase letter');
+
+      if (/[a-z]/.test(password)) strength++;
+      else feedback.push('One lowercase letter');
+
+      if (/[0-9]/.test(password)) strength++;
+      else feedback.push('One number');
+
+      if (/[^A-Za-z0-9]/.test(password)) strength++;
+      else feedback.push('One special character');
+
+      const colors = ['text-red-500', 'text-red-400', 'text-yellow-500', 'text-yellow-400', 'text-green-500'];
+      const labels = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'];
+
+      strengthDiv.className = `text-xs mt-1 ${colors[strength - 1] || 'text-gray-500'}`;
+      strengthDiv.textContent = strength > 0 ? `Strength: ${labels[strength - 1]}` : 'Enter a password';
+
+      if (feedback.length > 0 && password.length > 0) {
+        strengthDiv.textContent += ` (Missing: ${feedback.join(', ')})`;
+      }
+    }
+
+    function handleRegistration(e) {
+      e.preventDefault();
+
+      const formData = new FormData(e.target);
+      const email = formData.get('email');
+      const confirmEmail = formData.get('confirmEmail');
+      const username = formData.get('username');
+      const password = formData.get('password');
+      const confirmPassword = formData.get('confirmPassword');
+      const terms = formData.get('terms');
+
+      let isValid = true;
+
+      if (!validateEmail(email)) {
+        showError('emailError', 'Please enter a valid email address');
+        isValid = false;
+      }
+
+      if (email !== confirmEmail) {
+        showError('confirmEmailError', 'Email addresses do not match');
+        isValid = false;
+      }
+
+      if (username.length < 3) {
+        showError('usernameError', 'Username must be at least 3 characters');
+        isValid = false;
+      }
+
+      if (password.length < 8) {
+        showError('passwordError', 'Password must be at least 8 characters');
+        isValid = false;
+      }
+
+      if (password !== confirmPassword) {
+        showError('confirmPasswordError', 'Passwords do not match');
+        isValid = false;
+      }
+
+      if (!terms) {
+        showNotification('Please accept the terms and conditions', 'error');
+        isValid = false;
+      }
+
+      if (!isValid) return;
+
+      registrationData = {
+        email,
+        username,
+        password,
+        timestamp: new Date().toISOString()
+      };
+
+      if (email.includes('.edu')) {
+        sendOtp(email);
+        document.getElementById('emailDisplay').textContent = email;
+        showStep(2);
+      } else {
+        showStep(3);
+      }
+    }
+
+    function initializeOtpInputs() {
+      const otpInputs = document.querySelectorAll('.otp-input');
+
+      otpInputs.forEach((input, index) => {
+        input.addEventListener('input', function (e) {
+          if (e.target.value.length === 1 && index < otpInputs.length - 1) {
+            otpInputs[index + 1].focus();
+          }
+        });
+
+        input.addEventListener('keydown', function (e) {
+          if (e.key === 'Backspace' && e.target.value === '' && index > 0) {
+            otpInputs[index - 1].focus();
+          }
+        });
+      });
+    }
+
+    function sendOtp(email) {
+      console.log(`Sending OTP to ${email}`);
+      showNotification('OTP sent successfully!', 'success');
+    }
+
+    function handleOtpVerification(e) {
+      e.preventDefault();
+
+      const otpInputs = document.querySelectorAll('.otp-input');
+      const otp = Array.from(otpInputs).map(input => input.value).join('');
+
+      if (otp.length !== 6) {
+        showError('otpError', 'Please enter all 6 digits');
+        return;
+      }
+
+      // Simulate OTP verification
+      if (otp === '123456') {
+        completeRegistration();
+      } else {
+        showError('otpError', 'Invalid OTP. Please try again.');
+        otpInputs.forEach(input => input.value = '');
+        otpInputs[0].focus();
+      }
+    }
+
+    function resendOtp() {
+      sendOtp(registrationData.email);
+
+      const otpInputs = document.querySelectorAll('.otp-input');
+      otpInputs.forEach(input => input.value = '');
+      otpInputs[0].focus();
+    }
+
+    function initializeFileUpload() {
+      const uploadArea = document.getElementById('uploadArea');
+      const fileInput = document.getElementById('fileInput');
+
+      uploadArea.addEventListener('click', () => fileInput.click());
+
+      uploadArea.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        uploadArea.classList.add('dragover');
+      });
+
+      uploadArea.addEventListener('dragleave', function (e) {
+        e.preventDefault();
+        uploadArea.classList.remove('dragover');
+      });
+
+      uploadArea.addEventListener('drop', function (e) {
+        e.preventDefault();
+        uploadArea.classList.remove('dragover');
+        handleFiles(e.dataTransfer.files);
+      });
+
+      fileInput.addEventListener('change', function (e) {
+        handleFiles(e.target.files);
+      });
+    }
+
+    function handleFiles(files) {
+      const fileList = document.getElementById('fileList');
+      const uploadButton = document.getElementById('uploadButton');
+
+      Array.from(files).forEach(file => {
+        if (file.size > 5 * 1024 * 1024) { // 5MB limit
+          showNotification(`File ${file.name} is too large. Maximum size is 5MB.`, 'error');
+          return;
+        }
+
+        if (!['image/jpeg', 'image/png', 'application/pdf'].includes(file.type)) {
+          showNotification(`File ${file.name} is not supported. Use JPG, PNG, or PDF.`, 'error');
+          return;
+        }
+
+        uploadedFiles.push(file);
+
+        const fileItem = document.createElement('div');
+        fileItem.className = 'flex items-center justify-between bg-gray-800 p-3 rounded-lg';
+        fileItem.innerHTML = `
+          <div class="flex items-center">
+            <i class="fas fa-file-alt text-yellow-500 mr-3"></i>
+            <div>
+              <div class="text-white text-sm">${file.name}</div>
+              <div class="text-gray-400 text-xs">${(file.size / 1024 / 1024).toFixed(2)} MB</div>
+            </div>
+          </div>
+          <button type="button" class="text-red-500 hover:text-red-400" onclick="removeFile('${file.name}')">
+            <i class="fas fa-trash"></i>
+          </button>
+        `;
+
+        fileList.appendChild(fileItem);
+      });
+
+      if (uploadedFiles.length > 0) {
+        uploadButton.disabled = false;
+      }
+    }
+
+    function removeFile(fileName) {
+      uploadedFiles = uploadedFiles.filter(file => file.name !== fileName);
+
+      const fileList = document.getElementById('fileList');
+      fileList.innerHTML = '';
+
+      uploadedFiles.forEach(file => {
+        const fileItem = document.createElement('div');
+        fileItem.className = 'flex items-center justify-between bg-gray-800 p-3 rounded-lg';
+        fileItem.innerHTML = `
+          <div class="flex items-center">
+            <i class="fas fa-file-alt text-yellow-500 mr-3"></i>
+            <div>
+              <div class="text-white text-sm">${file.name}</div>
+              <div class="text-gray-400 text-xs">${(file.size / 1024 / 1024).toFixed(2)} MB</div>
+            </div>
+          </div>
+          <button type="button" class="text-red-500 hover:text-red-400" onclick="removeFile('${file.name}')">
+            <i class="fas fa-trash"></i>
+          </button>
+        `;
+        fileList.appendChild(fileItem);
+      });
+
+      const uploadButton = document.getElementById('uploadButton');
+      uploadButton.disabled = uploadedFiles.length === 0;
+    }
+
+    function handleDocumentSubmission(e) {
+      e.preventDefault();
+
+      if (uploadedFiles.length === 0) {
+        showError('uploadError', 'Please upload at least one document');
+        return;
+      }
+
+      // Simulate document upload and processing
+      const uploadButton = document.getElementById('uploadButton');
+      uploadButton.disabled = true;
+      uploadButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Uploading...';
+
+      // Simulate upload delay
+      setTimeout(() => {
+        completeRegistration(true);
+      }, 2000);
+    }
+
+    // Registration completion
+    function completeRegistration(isPending = false) {
+      const successTitle = document.getElementById('successTitle');
+      const successMessage = document.getElementById('successMessage');
+
+      if (isPending) {
+        successTitle.textContent = 'Documents Submitted!';
+        successTitle.className = 'text-2xl font-bold text-yellow-500 mb-4';
+        successMessage.innerHTML = `
+          <div class="bg-yellow-900 border border-yellow-600 rounded-lg p-4 mb-4">
+            <div class="flex items-center">
+              <i class="fas fa-clock text-yellow-500 mr-3"></i>
+              <div>
+                <div class="font-medium text-yellow-300">Verification Pending</div>
+                <div class="text-sm text-yellow-200">Your documents are being reviewed</div>
+              </div>
+            </div>
+          </div>
+          <p class="text-gray-300">
+            Thank you for submitting your documents! Our verification team will review them within 24-48 hours.
+            You'll receive an email notification once your account is approved.
+          </p>
+        `;
+      } else {
+        successTitle.textContent = 'Registration Successful!';
+        successTitle.className = 'text-2xl font-bold text-green-500 mb-4';
+        successMessage.innerHTML = `
+          <div class="verification-badge inline-block mb-4">
+            <i class="fas fa-graduation-cap mr-2"></i>
+            Student Status Verified
+          </div>
+          <p class="text-gray-300">
+            Congratulations! Your .edu email has been verified and your account is now active.
+            You can now access all student discounts and exclusive offers.
+          </p>
+        `;
+      }
+
+      showStep(4);
+
+      console.log('Registration completed:', registrationData);
+      showNotification('Registration process completed!', 'success');
+    }
+
+    function showError(elementId, message) {
+      const errorElement = document.getElementById(elementId);
+      errorElement.textContent = message;
+      errorElement.style.display = 'block';
+
+      // Hide error after 5 seconds
+      setTimeout(() => {
+        errorElement.style.display = 'none';
+      }, 5000);
+    }
+
+    function showNotification(message, type = 'success') {
+      const notification = document.getElementById('notification');
+      const notificationText = document.getElementById('notificationText');
+
+      notificationText.textContent = message;
+
+      // Set notification color based on type
+      if (type === 'error') {
+        notification.className = 'notification bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg';
+        notification.querySelector('i').className = 'fas fa-exclamation-circle mr-2';
+      } else {
+        notification.className = 'notification bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg';
+        notification.querySelector('i').className = 'fas fa-check-circle mr-2';
+      }
+
+      notification.classList.add('show');
+
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 4000);
+    }
+  </script>
 </body>
+
 </html>
