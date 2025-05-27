@@ -12,8 +12,8 @@ exports.signup = async (req, res) => {
       confirmEmail,
       password,
       confirmPassword,
-      username
- 
+      username,
+      collegeName
     } = req.body;
 
     // Basic validations
@@ -22,8 +22,8 @@ exports.signup = async (req, res) => {
       !confirmEmail ||
       !password ||
       !confirmPassword ||
-      !username 
-    
+      !username || 
+      !collegeName 
     ) {
       return res.status(400).json({ message: "All fields are required" });
     }
@@ -67,8 +67,8 @@ exports.signup = async (req, res) => {
       email,
       username,
       password: hashedPassword,
-      collegeName,
       qrCode: qrCodeImage,
+      collegeName
     });
 
     await newUser.save();
@@ -77,6 +77,7 @@ exports.signup = async (req, res) => {
       message: "User registered successfully.",
       userId: newUser._id,
       username: newUser.username,
+      collegeName
     });
   } catch (error) {
     console.error("Signup error:", error);
