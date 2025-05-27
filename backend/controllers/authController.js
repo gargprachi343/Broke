@@ -12,8 +12,8 @@ exports.signup = async (req, res) => {
       confirmEmail,
       password,
       confirmPassword,
-      username,
-      collegeName,
+      username
+ 
     } = req.body;
 
     // Basic validations
@@ -22,8 +22,8 @@ exports.signup = async (req, res) => {
       !confirmEmail ||
       !password ||
       !confirmPassword ||
-      !username ||
-      !collegeName
+      !username 
+    
     ) {
       return res.status(400).json({ message: "All fields are required" });
     }
