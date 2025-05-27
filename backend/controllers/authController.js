@@ -2,8 +2,8 @@ const bcrypt = require("bcrypt");
 const QRCode = require("qrcode");
 const User = require("../models/userModel");
 
-const isCollegeEmail = (email) =>
-  email.endsWith(".edu.in") || email.endsWith(".ac.in");
+const isCollegeOrGmail = (email) =>
+  email.endsWith(".edu.in") || email.endsWith(".ac.in") || email.endsWith("@gmail.com");
 
 exports.signup = async (req, res) => {
   try {
@@ -32,9 +32,9 @@ exports.signup = async (req, res) => {
       return res.status(400).json({ message: "Emails do not match" });
     }
 
-    if (!isCollegeEmail(email)) {
+    if (!isCollegeOrGmail(email)) {
       return res.status(400).json({
-        message: "Email must be from a college domain (.edu.in or .ac.in)",
+        message: "Email must be from a college domain (.edu.in or .ac.in) or a Gmail account (@gmail.com)",
       });
     }
 
