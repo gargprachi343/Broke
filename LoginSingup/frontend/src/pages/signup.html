@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join BrokeBro</title>
+    <link rel="stylesheet" href="../assets/css/variable.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <h1>Join BrokeBro now</h1>
+            <p class="subtitle">Studying at college, sixth form or university?<br>Get student discounts on all your fave brands – for free!</p>
+            
+            <form id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" placeholder="Personal email address" required>
+                    <small class="email-hint">Use your .edu.in email to skip document verification</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmEmail">Confirm email</label>
+                    <input type="email" id="confirmEmail" placeholder="Confirm personal email address" required>
+                </div>
+
+                <!-- Document verification fields - initially hidden -->
+                <div id="documentVerification" class="document-verification" style="display: none;">
+                    <div class="document-info">
+                        <p>Since you're not using an educational email (.edu.in), please upload the following documents:</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="collegeId">College ID Card</label>
+                        <input type="file" id="collegeId" accept="image/*" class="file-input">
+                        <small>Please upload a clear image of your college ID card</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feeReceipt">Fee Receipt</label>
+                        <input type="file" id="feeReceipt" accept="image/*,.pdf" class="file-input">
+                        <small>Upload your recent college fee receipt</small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Choose a username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="collegeName">College Name</label>
+                    <input type="text" id="collegeName" placeholder="Enter your college name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Choose a password" required>
+                    <small>Password must be at least 6 characters long</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                </div>
+
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="termsAccept" required>
+                    <label for="termsAccept">
+                        I accept the BrokeBro <a href="#terms">Terms of Service</a> and have read and understood the <a href="#privacy">Privacy Policy</a> and <a href="#cookie">Cookie Policy</a>. I confirm that I'm 13 years of age or older (and have obtained parental consent), or 18 years of age or older.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Join now</button>
+            </form>
+
+            <div class="auth-footer">
+                <a href="login.html">Already have an account? Log in</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/auth.js"></script>
+</body>
+</html>

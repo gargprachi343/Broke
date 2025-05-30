@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in to BrokeBro</title>
+    <link rel="stylesheet" href="../assets/css/variable.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <h1>Log in to BrokeBro</h1>
+            
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="notRobot">
+                    <label for="notRobot">I'm not a robot</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+            </form>
+
+            <div class="auth-footer">
+                <a href="signup.html" class="btn btn-outline">Join now</a>
+                <div class="auth-links">
+                    <a href="#forgot-password">Forgot password?</a>
+                    <a href="#support">Support</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/auth.js"></script>
+</body>
+</html>

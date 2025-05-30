@@ -1,0 +1,247 @@
+/* Styles specific to authentication pages */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: var(--darker-bg);
+}
+
+.auth-card {
+    background-color: var(--dark-bg);
+    border-radius: 10px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.auth-card h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    font-size: 1.8rem;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--gray-text);
+    margin-bottom: 1.5rem;
+}
+
+.auth-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.auth-form input:not([type="checkbox"]) {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--light-text);
+    font-size: 1rem;
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.auth-form .checkbox {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 1rem;
+}
+
+.auth-form .checkbox input {
+    margin-right: 0.5rem;
+    margin-top: 0.3rem;
+}
+
+.auth-form .checkbox label {
+    font-size: 0.9rem;
+    color: var(--gray-text);
+    line-height: 1.4;
+}
+
+.auth-form .checkbox a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.auth-form button {
+    margin-top: 1.5rem;
+    background-color: var(--primary-color);
+    color: #000;
+    border: none;
+    padding: 0.8rem 1rem;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-form button:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.auth-footer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.auth-footer .btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.8rem 1rem;
+    border-radius: 5px;
+    font-weight: 600;
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.auth-footer .btn-outline:hover {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+.auth-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.auth-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* OTP verification styles */
+#otp {
+  letter-spacing: 8px;
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.resend-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: #4a7bff;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+}
+
+.btn-text:hover {
+  color: #2a5aff;
+}
+
+.cooldown {
+  color: #777;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.subtitle {
+  color: #555;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-footer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.auth-footer .btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.8rem 1rem;
+    border-radius: 5px;
+    font-weight: 600;
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.auth-footer .btn-outline:hover {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+.auth-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.auth-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Add these styles for OTP verification */
+.otp-message {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #555;
+}
+
+#otp {
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+    text-align: center;
+}
+
+.resend-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: #0066cc;
+    cursor: pointer;
+    font-size: 0.9em;
+    padding: 0;
+    text-decoration: underline;
+}
+
+.btn-text:hover {
+    color: #004499;
+}
+
+.cooldown {
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.back-to-login {
+    margin-top: 30px;
+    text-align: center;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify OTP - BrokeBro</title>
+  <link rel="stylesheet" href="../assets/css/variable.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/auth.css">
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <h1>Verify Your Account</h1>
+      <p class="subtitle">Enter the verification code sent to your email</p>
+      
+      <form id="otpVerificationForm" class="auth-form">
+        <input type="hidden" id="userId">
+        
+        <div class="form-group">
+          <label for="otp">Verification Code</label>
+          <input type="text" id="otp" placeholder="Enter 6-digit code" maxlength="6" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary btn-block">Verify Code</button>
+        
+        <div class="resend-container">
+          <p>Didn't receive the code?</p>
+          <button id="resendOTP" class="btn btn-text">Resend code</button>
+          <div id="resendCooldown" class="cooldown" style="display: none;">
+            <span>Resend available in </span>
+            <span id="cooldownTimer">60</span>
+            <span> seconds</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../assets/js/auth.js"></script>
+  <script>
+    // Auto-load user ID from URL parameters or localStorage
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get userId from URL parameter or localStorage
+      const urlParams = new URLSearchParams(window.location.search);
+      const userId = urlParams.get('userId') || localStorage.getItem('tempUserId');
+      
+      if (userId) {
+        document.getElementById('userId').value = userId;
+      } else {
+        // Redirect to login if no userId is found
+        window.location.href = 'login.html';
+      }
+    });
+  </script>
+</body>
+</html>
